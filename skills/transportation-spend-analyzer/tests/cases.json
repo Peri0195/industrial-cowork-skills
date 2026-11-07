@@ -1,0 +1,72 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "shipments": [
+        {
+          "carrier": "A",
+          "amount": 100,
+          "ton_km": 50
+        },
+        {
+          "carrier": "A",
+          "amount": 200,
+          "ton_km": 50
+        },
+        {
+          "carrier": "B",
+          "amount": 100,
+          "ton_km": 100
+        }
+      ]
+    },
+    "expected": {
+      "total_amount": 400,
+      "cost_per_ton_km": 2
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "shipments": [
+        {
+          "carrier": "A",
+          "amount": 0,
+          "ton_km": 100
+        }
+      ]
+    },
+    "expected": {
+      "total_amount": 0,
+      "cost_per_ton_km": 0
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "shipments": [
+        {
+          "carrier": "A",
+          "amount": 1,
+          "ton_km": 0
+        }
+      ]
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

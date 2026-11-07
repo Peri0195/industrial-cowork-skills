@@ -1,0 +1,97 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "items": [
+        {
+          "id": "清扫",
+          "score": 3,
+          "max_score": 5
+        },
+        {
+          "id": "整理",
+          "score": 5,
+          "max_score": 5
+        }
+      ]
+    },
+    "expected": {
+      "score_pct": 80,
+      "gaps": [
+        "清扫"
+      ]
+    },
+    "actual": {
+      "score_pct": 80.0,
+      "gaps": [
+        "清扫"
+      ]
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'items'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "items": [
+        {
+          "id": "A",
+          "score": 0,
+          "max_score": 10
+        }
+      ]
+    },
+    "expected": {
+      "score_pct": 0
+    },
+    "actual": {
+      "score_pct": 0.0,
+      "gaps": [
+        "A"
+      ]
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "items": [
+        {
+          "id": "A",
+          "score": 11,
+          "max_score": 10
+        }
+      ]
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "得分超过满分"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

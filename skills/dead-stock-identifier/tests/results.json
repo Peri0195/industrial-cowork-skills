@@ -1,0 +1,112 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "as_of": "2026-11-07",
+      "threshold_days": 90,
+      "items": [
+        {
+          "sku": "A",
+          "last_issue": "2026-07-01",
+          "quantity": 10,
+          "unit_cost": 8
+        },
+        {
+          "sku": "B",
+          "last_issue": "2026-11-01",
+          "quantity": 20,
+          "unit_cost": 2
+        }
+      ]
+    },
+    "expected": {
+      "flagged_skus": [
+        "A"
+      ],
+      "book_value": 80
+    },
+    "actual": {
+      "flagged_skus": [
+        "A"
+      ],
+      "book_value": 80
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'as_of'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "as_of": "2026-11-07",
+      "threshold_days": 90,
+      "items": [
+        {
+          "sku": "A",
+          "last_issue": "2026-01-01",
+          "quantity": 0,
+          "unit_cost": 5
+        }
+      ]
+    },
+    "expected": {
+      "flagged_skus": [],
+      "book_value": 0
+    },
+    "actual": {
+      "flagged_skus": [],
+      "book_value": 0
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "as_of": "2026-11-07",
+      "threshold_days": 0,
+      "items": [
+        {
+          "sku": "A",
+          "last_issue": "2026-07-01",
+          "quantity": 10,
+          "unit_cost": 8
+        },
+        {
+          "sku": "B",
+          "last_issue": "2026-11-01",
+          "quantity": 20,
+          "unit_cost": 2
+        }
+      ]
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "threshold_days: 必须大于0"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

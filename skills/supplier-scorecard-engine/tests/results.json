@@ -1,0 +1,128 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "weights": {
+        "quality": 0.6,
+        "delivery": 0.4
+      },
+      "suppliers": {
+        "A": {
+          "quality": 90,
+          "delivery": 80
+        },
+        "B": {
+          "quality": 80,
+          "delivery": 90
+        }
+      }
+    },
+    "expected": {
+      "scores": {
+        "A": 86,
+        "B": 84
+      },
+      "ranking": [
+        "A",
+        "B"
+      ]
+    },
+    "actual": {
+      "scores": {
+        "A": 86.0,
+        "B": 84.0
+      },
+      "ranking": [
+        "A",
+        "B"
+      ]
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'weights'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "weights": {
+        "quality": 1,
+        "delivery": 0
+      },
+      "suppliers": {
+        "A": {
+          "quality": 90,
+          "delivery": 80
+        },
+        "B": {
+          "quality": 80,
+          "delivery": 90
+        }
+      }
+    },
+    "expected": {
+      "scores": {
+        "A": 90,
+        "B": 80
+      }
+    },
+    "actual": {
+      "scores": {
+        "A": 90,
+        "B": 80
+      },
+      "ranking": [
+        "A",
+        "B"
+      ]
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "weights": {
+        "quality": 0.2,
+        "delivery": 0.2
+      },
+      "suppliers": {
+        "A": {
+          "quality": 90,
+          "delivery": 80
+        },
+        "B": {
+          "quality": 80,
+          "delivery": 90
+        }
+      }
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "权重和须为1"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

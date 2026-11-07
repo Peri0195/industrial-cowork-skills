@@ -1,0 +1,96 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "actual": [
+        100,
+        200
+      ],
+      "forecast": [
+        110,
+        180
+      ]
+    },
+    "expected": {
+      "mae": 15,
+      "rmse": 15.811388300841896,
+      "wape_pct": 10,
+      "bias": -5
+    },
+    "actual": {
+      "mae": 15,
+      "rmse": 15.811388300841896,
+      "wape_pct": 10.0,
+      "bias": -5
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'actual'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "actual": [
+        0,
+        0
+      ],
+      "forecast": [
+        0,
+        0
+      ]
+    },
+    "expected": {
+      "mae": 0,
+      "wape_pct": null,
+      "bias": 0
+    },
+    "actual": {
+      "mae": 0,
+      "rmse": 0.0,
+      "wape_pct": null,
+      "bias": 0
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "actual": [
+        100,
+        200
+      ],
+      "forecast": [
+        1
+      ]
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "序列长度须一致"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

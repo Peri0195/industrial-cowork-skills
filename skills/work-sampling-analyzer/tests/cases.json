@@ -1,0 +1,45 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "working_observations": 80,
+      "total_observations": 100
+    },
+    "expected": {
+      "utilization_pct": 80
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "working_observations": 0,
+      "total_observations": 100
+    },
+    "expected": {
+      "utilization_pct": 0
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "working_observations": 101,
+      "total_observations": 100
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

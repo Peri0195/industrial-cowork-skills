@@ -1,0 +1,57 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "quantity": 12,
+      "unit_rate": 10,
+      "approved_surcharges": 5,
+      "invoiced": 130,
+      "tolerance": 0.01
+    },
+    "expected": {
+      "expected_amount": 125,
+      "difference": 5,
+      "flagged": true
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "quantity": 12,
+      "unit_rate": 10,
+      "approved_surcharges": 5,
+      "invoiced": 125,
+      "tolerance": 0.01
+    },
+    "expected": {
+      "difference": 0,
+      "flagged": false
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "quantity": -1,
+      "unit_rate": 10,
+      "approved_surcharges": 5,
+      "invoiced": 130,
+      "tolerance": 0.01
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

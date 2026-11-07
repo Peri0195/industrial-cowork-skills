@@ -1,0 +1,83 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "station_minutes": [
+        4,
+        5,
+        3
+      ]
+    },
+    "expected": {
+      "cycle_minutes": 5,
+      "efficiency_pct": 80,
+      "idle_minutes": 3
+    },
+    "actual": {
+      "cycle_minutes": 5,
+      "efficiency_pct": 80.0,
+      "idle_minutes": 3
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'station_minutes'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "station_minutes": [
+        3,
+        3,
+        3
+      ]
+    },
+    "expected": {
+      "efficiency_pct": 100,
+      "idle_minutes": 0
+    },
+    "actual": {
+      "cycle_minutes": 3,
+      "efficiency_pct": 100.0,
+      "idle_minutes": 0
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "station_minutes": [
+        0,
+        0
+      ]
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "工位时间不能全为0"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

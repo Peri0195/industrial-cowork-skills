@@ -1,0 +1,7 @@
+{
+  "repo": "a5c-ai/babysitter",
+  "url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/oee-calculator/SKILL.md",
+  "commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "original_sha256": "9baa2a97366c4f71ed286ecc917f8a7415054ccc755d7563db18bfb0b13d7340",
+  "adaptation": "新增纯标准库计算入口、输入检查、验收样例和中文说明；原始说明逐字保留。原文的性能率截断逻辑由显式输入错误代替，避免掩盖理想节拍问题。"
+}

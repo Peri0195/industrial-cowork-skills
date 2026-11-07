@@ -1,0 +1,1288 @@
+[
+  {
+    "序号": 1,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "生产制造",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "设备综合效率计算与损失核对",
+    "Skill英文原名": "oee-calculator",
+    "一段话介绍": "根据计划时间、运行时间、理想节拍、总产量和良品数量计算OEE与三个分率，输出停机时间、不良数量和输入错误说明；保留上游六大损失等完整说明，脚本范围限定为基础OEE核算。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/oee-calculator",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/oee-calculator.zip",
+    "本地测试": "正常、零产出及8类非法输入通过",
+    "平台导入": "通过：用户导入，安装文件独立比对一致",
+    "平台调用": "通过：用户回执、实际产物核对及已安装脚本复跑一致",
+    "upstream": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/oee-calculator/SKILL.md",
+    "去重说明": "无同名；与RTO判稳态不同。模板示例production-scheduling也含OEE主题，本项定位为独立计算入口，记录主题交集而非隐瞒。",
+    "近似条目": "production-scheduling（模板示例，非正式编号条目）",
+    "范围限制": "仅基础OEE；六大损失和趋势分析不由脚本实现。",
+    "script": "scripts/calculate_oee.py",
+    "sample": {
+      "planned_minutes": 480,
+      "run_minutes": 432,
+      "ideal_cycle_minutes": 0.4,
+      "total_count": 864,
+      "good_count": 821
+    },
+    "expected": {
+      "availability_pct": 90,
+      "performance_pct": 80,
+      "quality_pct": 95.023148,
+      "oee_pct": 68.416667,
+      "downtime_minutes": 48,
+      "reject_count": 43
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 2,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "生产制造",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "生产需求节拍核算",
+    "Skill英文原名": "takt-time-calculator",
+    "一段话介绍": "按净可用时间与需求量计算需求节拍，并对照实际单件周期识别节拍缺口。 需求节拍=可用分钟/需求件数；周期大于需求节拍时表示单工位能力不足。 不自动排班，不代替多工序产能仿真。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/takt-time-calculator",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/takt-time-calculator.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/takt-time-calculator",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为按净可用时间与需求量计算需求节拍，并对照实际单件周期识别节拍缺口。",
+    "近似条目": "capacity-plan; bearing",
+    "范围限制": "不自动排班，不代替多工序产能仿真。",
+    "script": "scripts/run.py",
+    "sample": {
+      "available_minutes": 420,
+      "demand_units": 210,
+      "cycle_minutes": 2.5
+    },
+    "expected": {
+      "takt_minutes": 2,
+      "gap_minutes": 0.5
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 3,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "生产制造",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "工时观测与标准时间核算",
+    "Skill英文原名": "time-study-analyzer",
+    "一段话介绍": "将重复观测的操作时间按评比系数及宽放率换算为标准时间。 正常时间=观测均值×评比系数；标准时间=正常时间/(1-宽放率)。宽放率定义为标准时间占比。 不自动推断劳动强度或宽放率，评比和宽放必须由用户提供。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/time-study-analyzer",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/time-study-analyzer.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/time-study-analyzer",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为将重复观测的操作时间按评比系数及宽放率换算为标准时间。",
+    "近似条目": "catalyst-analyzer; abaqus-solving",
+    "范围限制": "不自动推断劳动强度或宽放率，评比和宽放必须由用户提供。",
+    "script": "scripts/run.py",
+    "sample": {
+      "observations_minutes": [
+        4,
+        5,
+        6
+      ],
+      "rating_factor": 1.1,
+      "allowance_fraction": 0.1
+    },
+    "expected": {
+      "normal_minutes": 5.5,
+      "standard_minutes": 6.111111111111111
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 4,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "生产制造",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "作业抽样利用率估计",
+    "Skill英文原名": "work-sampling-analyzer",
+    "一段话介绍": "根据随机观察中工作状态的次数估计利用率及Wilson 95%区间。 p=工作次数/总观察次数；区间使用z=1.959963984540054的Wilson公式，避免0或1比例的退化区间。 要求随机且近似独立抽样；不能直接解释为人员绩效。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/work-sampling-analyzer",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/work-sampling-analyzer.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/work-sampling-analyzer",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为根据随机观察中工作状态的次数估计利用率及Wilson 95%区间。",
+    "近似条目": "catalyst-analyzer; trade-study",
+    "范围限制": "要求随机且近似独立抽样；不能直接解释为人员绩效。",
+    "script": "scripts/run.py",
+    "sample": {
+      "working_observations": 80,
+      "total_observations": 100
+    },
+    "expected": {
+      "utilization_pct": 80
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 5,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "生产制造",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "既定工位分配平衡率核算",
+    "Skill英文原名": "line-balancer",
+    "一段话介绍": "对已分配的工位负荷计算瓶颈周期、空闲时间和平衡效率。 周期=max(工位时间)；平衡率=sum(工位时间)/(工位数×周期)。 只评价既定工位分配；不自动解决任务优先关系下的最优分配。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/line-balancer",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/line-balancer.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/line-balancer",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为对已分配的工位负荷计算瓶颈周期、空闲时间和平衡效率。",
+    "近似条目": "gas-turbine-cycle; gas-turbine-cycle",
+    "范围限制": "只评价既定工位分配；不自动解决任务优先关系下的最优分配。",
+    "script": "scripts/run.py",
+    "sample": {
+      "station_minutes": [
+        4,
+        5,
+        3
+      ]
+    },
+    "expected": {
+      "cycle_minutes": 5,
+      "efficiency_pct": 80,
+      "idle_minutes": 3
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 6,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "生产制造",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "换型内外作业改善核算",
+    "Skill英文原名": "smed-analyzer",
+    "一段话介绍": "比较改进前后的停机内作业时间，量化转外作业后的停机节约。 改善前停机=sum(before_internal_minutes)；改善后=sum(after_internal_minutes)；外作业并行能力由现场另行确认。 只核算时间，不假设移到机外的作业无需资源。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/smed-analyzer",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/smed-analyzer.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/smed-analyzer",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为比较改进前后的停机内作业时间，量化转外作业后的停机节约。",
+    "近似条目": "waste-minimization-analyzer; catalyst-analyzer",
+    "范围限制": "只核算时间，不假设移到机外的作业无需资源。",
+    "script": "scripts/run.py",
+    "sample": {
+      "before_internal_minutes": [
+        10,
+        20,
+        5
+      ],
+      "after_internal_minutes": [
+        8,
+        10,
+        2
+      ]
+    },
+    "expected": {
+      "saved_minutes": 15,
+      "reduction_pct": 42.857142857142854
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 7,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "生产制造",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "缺陷类别帕累托排序",
+    "Skill英文原名": "pareto-analyzer",
+    "一段话介绍": "对缺陷或损失类别汇总、排序，计算累计占比并标出覆盖目标比例的最小前缀。 按数量降序，同数量按类别名排序；包含使累计比例第一次达到或超过目标值的类别。 类别排序不是根因证明；不同单位的损失不能混合。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/pareto-analyzer",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/pareto-analyzer.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/pareto-analyzer",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为对缺陷或损失类别汇总、排序，计算累计占比并标出覆盖目标比例的最小前缀。",
+    "近似条目": "self-improvement; pareto-startup-thinking",
+    "范围限制": "类别排序不是根因证明；不同单位的损失不能混合。",
+    "script": "scripts/run.py",
+    "sample": {
+      "counts": {
+        "划伤": 50,
+        "尺寸": 30,
+        "其他": 20
+      },
+      "target_fraction": 0.8
+    },
+    "expected": {
+      "total": 100,
+      "priority_categories": [
+        "划伤",
+        "尺寸"
+      ]
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 8,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "生产制造",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "5S现场检查得分汇总",
+    "Skill英文原名": "five-s-auditor",
+    "一段话介绍": "按用户提供的检查项目得分和满分汇总5S检查结果，列出未满分项目。 总得分率=sum(score)/sum(max_score)，不使用不同量表得分率的简单平均。 不从照片自动判分，不替代现场检查证据。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/five-s-auditor",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/five-s-auditor.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/five-s-auditor",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为按用户提供的检查项目得分和满分汇总5S检查结果，列出未满分项目。",
+    "近似条目": "ceos-rocks; organization-management",
+    "范围限制": "不从照片自动判分，不替代现场检查证据。",
+    "script": "scripts/run.py",
+    "sample": {
+      "items": [
+        {
+          "id": "清扫",
+          "score": 3,
+          "max_score": 5
+        },
+        {
+          "id": "整理",
+          "score": 5,
+          "max_score": 5
+        }
+      ]
+    },
+    "expected": {
+      "score_pct": 80,
+      "gaps": [
+        "清扫"
+      ]
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 9,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "生产制造",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "单服务台排队指标估计",
+    "Skill英文原名": "queuing-analyzer",
+    "一段话介绍": "在M/M/1假设下，按到达率和服务率计算平均队长、等待和逗留时间。 rho=lambda/mu；L=lambda/(mu-lambda)；Lq=rho²/(1-rho)；W=1/(mu-lambda)；Wq=Lq/lambda。 仅适用于单服务台、泊松到达、指数服务时间、无限等待容量的稳定模型。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/queuing-analyzer",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/queuing-analyzer.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/queuing-analyzer",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为在M/M/1假设下，按到达率和服务率计算平均队长、等待和逗留时间。",
+    "近似条目": "strategic-analysis; test-correlation",
+    "范围限制": "仅适用于单服务台、泊松到达、指数服务时间、无限等待容量的稳定模型。",
+    "script": "scripts/run.py",
+    "sample": {
+      "arrivals_per_hour": 4,
+      "service_per_hour": 6
+    },
+    "expected": {
+      "utilization": 0.6666666666666666,
+      "queue_length": 1.3333333333333333,
+      "wait_hours": 0.3333333333333333
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 10,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "风险中性方案期望值比较",
+    "Skill英文原名": "decision-tree-analyzer",
+    "一段话介绍": "按各方案的概率和收益分支计算期望值并排序。 每个方案概率之和必须为1；期望值=sum(probability×payoff)。收益单位须一致。 只做风险中性期望值比较，不推断风险偏好或承诺收益。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/decision-tree-analyzer",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/decision-tree-analyzer.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/decision-tree-analyzer",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为按各方案的概率和收益分支计算期望值并排序。",
+    "近似条目": "value-of-emptiness; task-decomposer",
+    "范围限制": "只做风险中性期望值比较，不推断风险偏好或承诺收益。",
+    "script": "scripts/run.py",
+    "sample": {
+      "options": {
+        "A": [
+          {
+            "p": 0.5,
+            "payoff": 100
+          },
+          {
+            "p": 0.5,
+            "payoff": 0
+          }
+        ],
+        "B": [
+          {
+            "p": 1,
+            "payoff": 40
+          }
+        ]
+      }
+    },
+    "expected": {
+      "best_option": "A",
+      "expected_values": {
+        "A": 50,
+        "B": 40
+      }
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 11,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "生产制造",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "既定厂内布局搬运负荷比较",
+    "Skill英文原名": "facility-layout-optimizer",
+    "一段话介绍": "按各布局的运输频次和距离计算流量距离指标，比较候选布局。 布局负荷=sum(flow×distance)。流量、距离单位和统计周期在各候选间保持一致。 只比较用户提供的布局，不生成几何布局或保证全局最优。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/facility-layout-optimizer",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/facility-layout-optimizer.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/facility-layout-optimizer",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为按各布局的运输频次和距离计算流量距离指标，比较候选布局。",
+    "近似条目": "query-facility; testing-workflow-optimizer",
+    "范围限制": "只比较用户提供的布局，不生成几何布局或保证全局最优。",
+    "script": "scripts/run.py",
+    "sample": {
+      "layouts": {
+        "A": [
+          {
+            "flow": 10,
+            "distance": 20
+          },
+          {
+            "flow": 5,
+            "distance": 10
+          }
+        ],
+        "B": [
+          {
+            "flow": 10,
+            "distance": 10
+          },
+          {
+            "flow": 5,
+            "distance": 20
+          }
+        ]
+      }
+    },
+    "expected": {
+      "best_layout": "B",
+      "load_distance": {
+        "A": 250,
+        "B": 200
+      }
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 12,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "库存价值与需求波动分类",
+    "Skill英文原名": "abc-xyz-classifier",
+    "一段话介绍": "对SKU按年耗用金额划ABC类，按需求变异系数划XYZ类，保留分类边界口径。 ABC使用该SKU加入前的累计价值占比分类；XYZ使用样本标准差/均值，阈值由用户给出；零均值需求归Z。 ABC阈值跨界SKU采用加入前累计占比口径，不能与其他边界口径混用。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/abc-xyz-classifier",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/abc-xyz-classifier.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/abc-xyz-classifier",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为对SKU按年耗用金额划ABC类，按需求变异系数划XYZ类，保留分类边界口径。",
+    "近似条目": "multi-physics-simulation; automotive-domain-classifier",
+    "范围限制": "ABC阈值跨界SKU采用加入前累计占比口径，不能与其他边界口径混用。",
+    "script": "scripts/run.py",
+    "sample": {
+      "items": [
+        {
+          "sku": "A",
+          "annual_value": 80,
+          "demand": [
+            10,
+            10,
+            10
+          ]
+        },
+        {
+          "sku": "B",
+          "annual_value": 20,
+          "demand": [
+            0,
+            10,
+            20
+          ]
+        }
+      ],
+      "abc_a": 0.8,
+      "abc_b": 0.95,
+      "xyz_x": 0.2,
+      "xyz_y": 0.5
+    },
+    "expected": {
+      "classes": {
+        "A": "AX",
+        "B": "BZ"
+      }
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 13,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "循环盘点到期清单",
+    "Skill英文原名": "cycle-count-scheduler",
+    "一段话介绍": "按SKU最近盘点日期和既定周期列出已到期项目，输出账实差异。 到期日=上次盘点日+周期天数；到期日不晚于as_of计为到期；差异=实盘-账面。 盘点周期由用户规定，不自动创建ERP盘点单。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/cycle-count-scheduler",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/cycle-count-scheduler.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/cycle-count-scheduler",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为按SKU最近盘点日期和既定周期列出已到期项目，输出账实差异。",
+    "近似条目": "capacity-scheduler; abaqus-fatigue-analysis",
+    "范围限制": "盘点周期由用户规定，不自动创建ERP盘点单。",
+    "script": "scripts/run.py",
+    "sample": {
+      "as_of": "2026-11-07",
+      "items": [
+        {
+          "sku": "A",
+          "last_count": "2026-10-01",
+          "interval_days": 30,
+          "book": 100,
+          "actual": 98
+        },
+        {
+          "sku": "B",
+          "last_count": "2026-11-01",
+          "interval_days": 30,
+          "book": 10,
+          "actual": 10
+        }
+      ]
+    },
+    "expected": {
+      "due_skus": [
+        "A"
+      ],
+      "variance": {
+        "A": -2,
+        "B": 0
+      }
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 14,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "库存久未动用识别",
+    "Skill英文原名": "dead-stock-identifier",
+    "一段话介绍": "依据最后出库日期、库存量和用户规定的天数阈值筛出积压候选并计算账面占用。 库存大于0且距最后出库天数>=阈值时入选；账面占用=数量×单位成本。 标记为积压候选，不等于报废或会计减值结论。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/dead-stock-identifier",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/dead-stock-identifier.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/dead-stock-identifier",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为依据最后出库日期、库存量和用户规定的天数阈值筛出积压候选并计算账面占用。",
+    "近似条目": "tiger-team-identifier; planning",
+    "范围限制": "标记为积压候选，不等于报废或会计减值结论。",
+    "script": "scripts/run.py",
+    "sample": {
+      "as_of": "2026-11-07",
+      "threshold_days": 90,
+      "items": [
+        {
+          "sku": "A",
+          "last_issue": "2026-07-01",
+          "quantity": 10,
+          "unit_cost": 8
+        },
+        {
+          "sku": "B",
+          "last_issue": "2026-11-01",
+          "quantity": 20,
+          "unit_cost": 2
+        }
+      ]
+    },
+    "expected": {
+      "flagged_skus": [
+        "A"
+      ],
+      "book_value": 80
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 15,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "批次出库顺序分配",
+    "Skill英文原名": "fifo-lifo-controller",
+    "一段话介绍": "按FIFO、LIFO或FEFO规则为指定需求生成批次分配建议并报告缺口。 FIFO按收货日期升序，LIFO降序，FEFO按到期日期升序；同日按批次ID排序。不执行出库。 FEFO只排序，不自动判定保质期是否允许发货；库位、冻结和质量状态须先筛选。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/fifo-lifo-controller",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/fifo-lifo-controller.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/fifo-lifo-controller",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为按FIFO、LIFO或FEFO规则为指定需求生成批次分配建议并报告缺口。",
+    "近似条目": "reagent-expiry-alert; habits-quarterly-rotation",
+    "范围限制": "FEFO只排序，不自动判定保质期是否允许发货；库位、冻结和质量状态须先筛选。",
+    "script": "scripts/run.py",
+    "sample": {
+      "method": "FIFO",
+      "quantity": 7,
+      "batches": [
+        {
+          "id": "A",
+          "received": "2026-10-01",
+          "quantity": 5
+        },
+        {
+          "id": "B",
+          "received": "2026-10-02",
+          "quantity": 8
+        }
+      ]
+    },
+    "expected": {
+      "allocation": {
+        "A": 5,
+        "B": 2
+      },
+      "shortage": 0
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 16,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "运费账单与约定单价核对",
+    "Skill英文原名": "freight-audit-validator",
+    "一段话介绍": "按数量、约定单价和已确认附加费计算应付金额，与账单比较差额。 应付=数量×单价+附加费；差额=账单-应付；绝对差额超过用户容差时标记。 只比对已提供费率，不解释税法、合同效力或自动付款。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/freight-audit-validator",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/freight-audit-validator.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/freight-audit-validator",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为按数量、约定单价和已确认附加费计算应付金额，与账单比较差额。",
+    "近似条目": "material-takeoff-boq; map-audit",
+    "范围限制": "只比对已提供费率，不解释税法、合同效力或自动付款。",
+    "script": "scripts/run.py",
+    "sample": {
+      "quantity": 12,
+      "unit_rate": 10,
+      "approved_surcharges": 5,
+      "invoiced": 130,
+      "tolerance": 0.01
+    },
+    "expected": {
+      "expected_amount": 125,
+      "difference": 5,
+      "flagged": true
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 17,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "车辆载重容积利用率核对",
+    "Skill英文原名": "load-optimization-calculator",
+    "一段话介绍": "按货物总重量和体积计算车厢利用率及超限情况。 重量利用率=总重量/载重上限；容积利用率=总体积/容积上限。 不检查三维装箱、轴荷、堆码或道路法定限载，也不宣称最优装载。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/load-optimization-calculator",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/load-optimization-calculator.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/load-optimization-calculator",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为按货物总重量和体积计算车厢利用率及超限情况。",
+    "近似条目": "pump-efficiency-optimization; bearing",
+    "范围限制": "不检查三维装箱、轴荷、堆码或道路法定限载，也不宣称最优装载。",
+    "script": "scripts/run.py",
+    "sample": {
+      "weight_kg": 8000,
+      "volume_m3": 30,
+      "weight_capacity_kg": 10000,
+      "volume_capacity_m3": 60
+    },
+    "expected": {
+      "weight_utilization_pct": 80,
+      "volume_utilization_pct": 50,
+      "over_capacity": false
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 18,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "到货及时足量率核算",
+    "Skill英文原名": "logistics-kpi-tracker",
+    "一段话介绍": "基于同一订单集合计算准时率、足量率和同时准时足量的OTIF。 OTIF以同一订单同时满足on_time和in_full为分子；不能把两个比例直接相乘。 准时窗口和足量口径由业务方先确认；不连接物流平台。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/logistics-kpi-tracker",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/logistics-kpi-tracker.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/logistics-kpi-tracker",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为基于同一订单集合计算准时率、足量率和同时准时足量的OTIF。",
+    "近似条目": "engineering-optimization; ksb-d10-k0044",
+    "范围限制": "准时窗口和足量口径由业务方先确认；不连接物流平台。",
+    "script": "scripts/run.py",
+    "sample": {
+      "orders": [
+        {
+          "id": "1",
+          "on_time": true,
+          "in_full": true
+        },
+        {
+          "id": "2",
+          "on_time": true,
+          "in_full": false
+        },
+        {
+          "id": "3",
+          "on_time": false,
+          "in_full": true
+        },
+        {
+          "id": "4",
+          "on_time": true,
+          "in_full": true
+        }
+      ]
+    },
+    "expected": {
+      "on_time_pct": 75,
+      "in_full_pct": 75,
+      "otif_pct": 50
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 19,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "固定提前期安全库存估计",
+    "Skill英文原名": "safety-stock-calculator",
+    "一段话介绍": "在日需求独立且提前期固定的假设下计算安全库存及再订货点。 安全库存=z×日需求标准差×sqrt(提前期天数)；再订货点=日均需求×提前期+安全库存。z由用户给定。 不适用于需求显著自相关、提前期波动或多级库存优化；不自动选择服务水平。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/safety-stock-calculator",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/safety-stock-calculator.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/safety-stock-calculator",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为在日需求独立且提前期固定的假设下计算安全库存及再订货点。",
+    "近似条目": "priority; bearing",
+    "范围限制": "不适用于需求显著自相关、提前期波动或多级库存优化；不自动选择服务水平。",
+    "script": "scripts/run.py",
+    "sample": {
+      "mean_daily": 100,
+      "std_daily": 10,
+      "lead_days": 9,
+      "z": 2
+    },
+    "expected": {
+      "safety_stock": 60,
+      "reorder_point": 960
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 20,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "拣选频次与库位优先匹配",
+    "Skill英文原名": "slotting-optimization-engine",
+    "一段话介绍": "将高频SKU与较短拣选距离库位一对一配对，输出加权距离。 在每SKU占一个可互换库位、无容量和兼容约束下，频次降序与距离升序配对。 忽略尺寸、承重、危险品、温区和通道拥堵；这些约束存在时不能直接执行。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/slotting-optimization-engine",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/slotting-optimization-engine.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/slotting-optimization-engine",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为将高频SKU与较短拣选距离库位一对一配对，输出加权距离。",
+    "近似条目": "pump-efficiency-optimization; operations-manager",
+    "范围限制": "忽略尺寸、承重、危险品、温区和通道拥堵；这些约束存在时不能直接执行。",
+    "script": "scripts/run.py",
+    "sample": {
+      "items": [
+        {
+          "sku": "A",
+          "picks": 10
+        },
+        {
+          "sku": "B",
+          "picks": 5
+        }
+      ],
+      "slots": [
+        {
+          "slot": "near",
+          "distance": 2
+        },
+        {
+          "slot": "far",
+          "distance": 8
+        }
+      ]
+    },
+    "expected": {
+      "assignment": {
+        "A": "near",
+        "B": "far"
+      },
+      "weighted_distance": 60
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 21,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "承运商运输费用汇总",
+    "Skill英文原名": "transportation-spend-analyzer",
+    "一段话介绍": "按承运商汇总账单金额和吨公里，计算单位运输费用。 总费用=sum(amount)；单位费用=总费用/sum(ton_km)，不对各笔单位成本简单平均。 币种与费用含税口径必须统一，不自动换汇或评价市场价格。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/transportation-spend-analyzer",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/transportation-spend-analyzer.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/transportation-spend-analyzer",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为按承运商汇总账单金额和吨公里，计算单位运输费用。",
+    "近似条目": "catalyst-analyzer; waste-minimization-analyzer",
+    "范围限制": "币种与费用含税口径必须统一，不自动换汇或评价市场价格。",
+    "script": "scripts/run.py",
+    "sample": {
+      "shipments": [
+        {
+          "carrier": "A",
+          "amount": 100,
+          "ton_km": 50
+        },
+        {
+          "carrier": "A",
+          "amount": 200,
+          "ton_km": 50
+        },
+        {
+          "carrier": "B",
+          "amount": 100,
+          "ton_km": 100
+        }
+      ]
+    },
+    "expected": {
+      "total_amount": 400,
+      "cost_per_ton_km": 2
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 22,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "需求预测误差核算",
+    "Skill英文原名": "forecast-accuracy-analyzer",
+    "一段话介绍": "对齐实际需求与预测序列，计算MAE、RMSE、WAPE及有符号偏差。 误差=预测-实际；WAPE=sum(abs(error))/sum(actual)。实际总量为0时WAPE为空。 只计算已对齐期间的误差，不生成预测，不混合不同SKU量纲。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/forecast-accuracy-analyzer",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/forecast-accuracy-analyzer.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/supply-chain/skills/forecast-accuracy-analyzer",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为对齐实际需求与预测序列，计算MAE、RMSE、WAPE及有符号偏差。",
+    "近似条目": "self-improvement; gear-noise",
+    "范围限制": "只计算已对齐期间的误差，不生成预测，不混合不同SKU量纲。",
+    "script": "scripts/run.py",
+    "sample": {
+      "actual": [
+        100,
+        200
+      ],
+      "forecast": [
+        110,
+        180
+      ]
+    },
+    "expected": {
+      "mae": 15,
+      "rmse": 15.811388300841896,
+      "wape_pct": 10,
+      "bias": -5
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 23,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "供应商加权评分核算",
+    "Skill英文原名": "supplier-scorecard-engine",
+    "一段话介绍": "按明确权重和同尺度指标得分汇总供应商绩效。 权重须非负且合计1；各指标分数0到100且越高越好；总分=sum(weight×score)。 不自动设权、不推断缺失评分、不作供应商准入审批。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/supplier-scorecard-engine",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/supplier-scorecard-engine.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/supply-chain/skills/supplier-scorecard-engine",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为按明确权重和同尺度指标得分汇总供应商绩效。",
+    "近似条目": "niopd-st-balanced-scorecard; rocket-propulsion",
+    "范围限制": "不自动设权、不推断缺失评分、不作供应商准入审批。",
+    "script": "scripts/run.py",
+    "sample": {
+      "weights": {
+        "quality": 0.6,
+        "delivery": 0.4
+      },
+      "suppliers": {
+        "A": {
+          "quality": 90,
+          "delivery": 80
+        },
+        "B": {
+          "quality": 80,
+          "delivery": 90
+        }
+      }
+    },
+    "expected": {
+      "scores": {
+        "A": 86,
+        "B": 84
+      },
+      "ranking": [
+        "A",
+        "B"
+      ]
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 24,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "设备持有期成本现值核算",
+    "Skill英文原名": "tco-calculator",
+    "一段话介绍": "按购置成本、逐年运行成本、折现率及期末残值计算同一持有期的TCO现值。 现值=初始成本+sum(第t年成本/(1+r)^t)-期末残值/(1+r)^N。年末现金流，r>=0。 只按用户输入计算，不提供税务、融资或投资建议。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/tco-calculator",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/tco-calculator.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/supply-chain/skills/tco-calculator",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为按购置成本、逐年运行成本、折现率及期末残值计算同一持有期的TCO现值。",
+    "近似条目": "material-balance-calculator; material-balance-calculator",
+    "范围限制": "只按用户输入计算，不提供税务、融资或投资建议。",
+    "script": "scripts/run.py",
+    "sample": {
+      "initial_cost": 1000,
+      "annual_costs": [
+        110,
+        121
+      ],
+      "discount_rate": 0.1,
+      "residual_value": 121
+    },
+    "expected": {
+      "present_value_tco": 1100
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 25,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "客户服务成本归集",
+    "Skill英文原名": "cost-to-serve-analyzer",
+    "一段话介绍": "按订单直接成本和配送处理次数归集客户服务成本，输出单位成本。 客户成本=sum(direct_cost+handling_events×handling_rate)；单位成本=客户成本/总件数。 只归集输入的成本项目；未提供的间接费用不自动分摊。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/cost-to-serve-analyzer",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/cost-to-serve-analyzer.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/supply-chain/skills/cost-to-serve-analyzer",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为按订单直接成本和配送处理次数归集客户服务成本，输出单位成本。",
+    "近似条目": "operations-manager; walmart-operations",
+    "范围限制": "只归集输入的成本项目；未提供的间接费用不自动分摊。",
+    "script": "scripts/run.py",
+    "sample": {
+      "handling_rate": 5,
+      "orders": [
+        {
+          "customer": "A",
+          "units": 10,
+          "direct_cost": 20,
+          "handling_events": 2
+        },
+        {
+          "customer": "A",
+          "units": 10,
+          "direct_cost": 30,
+          "handling_events": 1
+        }
+      ]
+    },
+    "expected": {
+      "customers": {
+        "A": {
+          "total_cost": 65,
+          "units": 20,
+          "cost_per_unit": 3.25
+        }
+      }
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 26,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "生产制造",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "串联工序瓶颈能力核算",
+    "Skill英文原名": "capacity-constraint-analyzer",
+    "一段话介绍": "按工序可用时间和单件时间计算产能，识别串联路线瓶颈及需求缺口。 各工序能力=可用分钟/单件分钟；路线能力=min(各工序能力)。 只适用所有产品依次经过同一串联路线、无返工和并行设备的简化模型。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/capacity-constraint-analyzer",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/capacity-constraint-analyzer.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/supply-chain/skills/capacity-constraint-analyzer",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为按工序可用时间和单件时间计算产能，识别串联路线瓶颈及需求缺口。",
+    "近似条目": "capacity-plan; scale-up-analyzer",
+    "范围限制": "只适用所有产品依次经过同一串联路线、无返工和并行设备的简化模型。",
+    "script": "scripts/run.py",
+    "sample": {
+      "demand_units": 100,
+      "stations": [
+        {
+          "id": "A",
+          "available_minutes": 480,
+          "minutes_per_unit": 4
+        },
+        {
+          "id": "B",
+          "available_minutes": 480,
+          "minutes_per_unit": 6
+        }
+      ]
+    },
+    "expected": {
+      "bottleneck": "B",
+      "capacity_units": 80,
+      "shortfall_units": 20
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 27,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "DDMRP缓冲区参数核算",
+    "Skill英文原名": "ddmrp-buffer-manager",
+    "一段话介绍": "按用户给定的平均日用量、解耦提前期和系数计算红黄绿缓冲区。 红底=ADU×DLT×提前期系数；红安全=红底×变异系数；黄区=ADU×DLT；绿区=max(MOQ,ADU×订货周期,红底)。 系数由用户提供；不自动选择缓冲点，也不生成采购订单。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/ddmrp-buffer-manager",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/ddmrp-buffer-manager.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/supply-chain/skills/ddmrp-buffer-manager",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为按用户给定的平均日用量、解耦提前期和系数计算红黄绿缓冲区。",
+    "近似条目": "operations-manager; manager-readiness-assessment",
+    "范围限制": "系数由用户提供；不自动选择缓冲点，也不生成采购订单。",
+    "script": "scripts/run.py",
+    "sample": {
+      "adu": 10,
+      "dlt_days": 5,
+      "lead_factor": 0.5,
+      "variability_factor": 0.5,
+      "moq": 20,
+      "order_cycle_days": 3
+    },
+    "expected": {
+      "red_zone": 37.5,
+      "yellow_zone": 50,
+      "green_zone": 30,
+      "top_green": 117.5
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 28,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "物料主数据缺项与重复检查",
+    "Skill英文原名": "master-data-quality-manager",
+    "一段话介绍": "检查物料编码重复、必填字段缺失及单位是否在指定词表中。 逐行检查；重复编码列出编码值，缺项按行号和字段输出，单位词表由用户提供。 不自动修改主数据，不校验物料技术参数或ERP编码规则。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/master-data-quality-manager",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/master-data-quality-manager.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/supply-chain/skills/master-data-quality-manager",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为检查物料编码重复、必填字段缺失及单位是否在指定词表中。",
+    "近似条目": "operations-manager; master-orchestrator",
+    "范围限制": "不自动修改主数据，不校验物料技术参数或ERP编码规则。",
+    "script": "scripts/run.py",
+    "sample": {
+      "required": [
+        "sku",
+        "unit"
+      ],
+      "allowed_units": [
+        "件",
+        "kg"
+      ],
+      "items": [
+        {
+          "sku": "A",
+          "unit": "件"
+        },
+        {
+          "sku": "A",
+          "unit": ""
+        },
+        {
+          "sku": "B",
+          "unit": "box"
+        }
+      ]
+    },
+    "expected": {
+      "duplicate_ids": [
+        "A"
+      ],
+      "missing_count": 1,
+      "invalid_unit_count": 1
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 29,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "仓库作业人时需求核算",
+    "Skill英文原名": "labor-productivity-optimizer",
+    "一段话介绍": "根据任务量、标准作业分钟及有效利用率估计所需人时和人数。 需求人时=任务量×单任务标准分钟/60/利用率；人数=ceil(需求人时/每人可用小时)。 只估算同类作业人时，未考虑班次法规、技能分工和休息日。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/labor-productivity-optimizer",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/labor-productivity-optimizer.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/labor-productivity-optimizer",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为根据任务量、标准作业分钟及有效利用率估计所需人时和人数。",
+    "近似条目": "pump-efficiency-optimization; testing-workflow-optimizer",
+    "范围限制": "只估算同类作业人时，未考虑班次法规、技能分工和休息日。",
+    "script": "scripts/run.py",
+    "sample": {
+      "task_count": 600,
+      "standard_minutes": 2,
+      "utilization": 0.8,
+      "hours_per_worker": 8
+    },
+    "expected": {
+      "labor_hours": 25,
+      "workers": 4
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  },
+  {
+    "序号": 30,
+    "Skill层级": "专业通用",
+    "行业": "全行业",
+    "专业维度": "经营管理",
+    "能力类型": "分析诊断,生成执行",
+    "Skill中文名称": "运输活动排放因子核算",
+    "Skill英文原名": "carbon-footprint-calculator",
+    "一段话介绍": "根据运输吨公里及用户提供的排放因子汇总估算排放量。 排放kgCO2e=sum(ton_km×factor_kgco2e_per_ton_km)。必须填写因子来源与适用边界。 没有内置官方因子；不宣称认证碳盘查或完整生命周期评价。",
+    "skills来源": "公网技能适配（保留原文，新增执行脚本）",
+    "下载链接": "https://github.com/Peri0195/industrial-cowork-skills/tree/main/skills/carbon-footprint-calculator",
+    "填写人": "",
+    "zip_url": "https://github.com/Peri0195/industrial-cowork-skills/raw/refs/heads/main/downloads/carbon-footprint-calculator.zip",
+    "本地测试": "5/5通过：正常、边界、业务非法、缺项、错误根类型",
+    "平台导入": "未验证（按用户要求停止后续验证）",
+    "平台调用": "未验证（按用户要求停止后续验证）",
+    "upstream": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/carbon-footprint-calculator",
+    "去重说明": "原清单、HTML及第二轮正式条目无同名；已比较近似条目，新增范围为根据运输吨公里及用户提供的排放因子汇总估算排放量。",
+    "近似条目": "bearing; planning",
+    "范围限制": "没有内置官方因子；不宣称认证碳盘查或完整生命周期评价。",
+    "script": "scripts/run.py",
+    "sample": {
+      "factor_source": "测试因子，仅用于验收",
+      "legs": [
+        {
+          "ton_km": 1000,
+          "factor_kgco2e_per_ton_km": 0.1
+        },
+        {
+          "ton_km": 500,
+          "factor_kgco2e_per_ton_km": 0.2
+        }
+      ]
+    },
+    "expected": {
+      "kg_co2e": 200
+    },
+    "source_bytes_preserved": true,
+    "publish_status": "已提交公网仓库（不另行验证链接）"
+  }
+]

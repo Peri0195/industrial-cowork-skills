@@ -1,0 +1,7 @@
+{
+  "best_option": "A",
+  "expected_values": {
+    "A": 50,
+    "B": 40
+  }
+}

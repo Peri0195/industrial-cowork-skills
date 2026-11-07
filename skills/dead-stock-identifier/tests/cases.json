@@ -1,0 +1,85 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "as_of": "2026-11-07",
+      "threshold_days": 90,
+      "items": [
+        {
+          "sku": "A",
+          "last_issue": "2026-07-01",
+          "quantity": 10,
+          "unit_cost": 8
+        },
+        {
+          "sku": "B",
+          "last_issue": "2026-11-01",
+          "quantity": 20,
+          "unit_cost": 2
+        }
+      ]
+    },
+    "expected": {
+      "flagged_skus": [
+        "A"
+      ],
+      "book_value": 80
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "as_of": "2026-11-07",
+      "threshold_days": 90,
+      "items": [
+        {
+          "sku": "A",
+          "last_issue": "2026-01-01",
+          "quantity": 0,
+          "unit_cost": 5
+        }
+      ]
+    },
+    "expected": {
+      "flagged_skus": [],
+      "book_value": 0
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "as_of": "2026-11-07",
+      "threshold_days": 0,
+      "items": [
+        {
+          "sku": "A",
+          "last_issue": "2026-07-01",
+          "quantity": 10,
+          "unit_cost": 8
+        },
+        {
+          "sku": "B",
+          "last_issue": "2026-11-01",
+          "quantity": 20,
+          "unit_cost": 2
+        }
+      ]
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

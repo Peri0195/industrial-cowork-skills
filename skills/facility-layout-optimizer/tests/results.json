@@ -1,0 +1,118 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "layouts": {
+        "A": [
+          {
+            "flow": 10,
+            "distance": 20
+          },
+          {
+            "flow": 5,
+            "distance": 10
+          }
+        ],
+        "B": [
+          {
+            "flow": 10,
+            "distance": 10
+          },
+          {
+            "flow": 5,
+            "distance": 20
+          }
+        ]
+      }
+    },
+    "expected": {
+      "best_layout": "B",
+      "load_distance": {
+        "A": 250,
+        "B": 200
+      }
+    },
+    "actual": {
+      "best_layout": "B",
+      "load_distance": {
+        "A": 250,
+        "B": 200
+      }
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'layouts'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "layouts": {
+        "A": [
+          {
+            "flow": 0,
+            "distance": 2
+          }
+        ],
+        "B": [
+          {
+            "flow": 1,
+            "distance": 1
+          }
+        ]
+      }
+    },
+    "expected": {
+      "best_layout": "A"
+    },
+    "actual": {
+      "best_layout": "A",
+      "load_distance": {
+        "A": 0,
+        "B": 1
+      }
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "layouts": {
+        "A": [
+          {
+            "flow": -1,
+            "distance": 2
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "flow: 必须非负"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

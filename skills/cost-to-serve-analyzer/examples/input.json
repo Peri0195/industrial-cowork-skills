@@ -1,0 +1,17 @@
+{
+  "handling_rate": 5,
+  "orders": [
+    {
+      "customer": "A",
+      "units": 10,
+      "direct_cost": 20,
+      "handling_events": 2
+    },
+    {
+      "customer": "A",
+      "units": 10,
+      "direct_cost": 30,
+      "handling_events": 1
+    }
+  ]
+}

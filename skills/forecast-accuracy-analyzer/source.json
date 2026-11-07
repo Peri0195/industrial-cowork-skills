@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "a5c-ai/babysitter",
+  "upstream_directory": "library/specializations/domains/business/supply-chain/skills/forecast-accuracy-analyzer",
+  "upstream_commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "upstream_directory_url": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/supply-chain/skills/forecast-accuracy-analyzer",
+  "upstream_files": [
+    {
+      "path": "upstream/SKILL.md",
+      "sha256": "950eda2ad4cd387cf54f586657ca824509d3d733958deb10f53513b5ed83e894",
+      "source_url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/supply-chain/skills/forecast-accuracy-analyzer/SKILL.md"
+    }
+  ],
+  "adaptation": "新增中文入口及明确范围的标准库脚本；完整上游目录另存upstream，不把新增代码冒充上游原件。",
+  "execution_scope": "对齐实际需求与预测序列，计算MAE、RMSE、WAPE及有符号偏差。",
+  "limitation": "只计算已对齐期间的误差，不生成预测，不混合不同SKU量纲。",
+  "license": "上游MIT声明保留于LICENSE.upstream.md；新增适配采用MIT。"
+}

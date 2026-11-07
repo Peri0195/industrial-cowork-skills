@@ -1,0 +1,134 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "items": [
+        {
+          "sku": "A",
+          "annual_value": 80,
+          "demand": [
+            10,
+            10,
+            10
+          ]
+        },
+        {
+          "sku": "B",
+          "annual_value": 20,
+          "demand": [
+            0,
+            10,
+            20
+          ]
+        }
+      ],
+      "abc_a": 0.8,
+      "abc_b": 0.95,
+      "xyz_x": 0.2,
+      "xyz_y": 0.5
+    },
+    "expected": {
+      "classes": {
+        "A": "AX",
+        "B": "BZ"
+      }
+    },
+    "actual": {
+      "classes": {
+        "A": "AX",
+        "B": "BZ"
+      }
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'items'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "items": [
+        {
+          "sku": "A",
+          "annual_value": 100,
+          "demand": [
+            0,
+            0
+          ]
+        }
+      ],
+      "abc_a": 0.8,
+      "abc_b": 0.95,
+      "xyz_x": 0.2,
+      "xyz_y": 0.5
+    },
+    "expected": {
+      "classes": {
+        "A": "AZ"
+      }
+    },
+    "actual": {
+      "classes": {
+        "A": "AZ"
+      }
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "items": [
+        {
+          "sku": "A",
+          "annual_value": 80,
+          "demand": [
+            10,
+            10,
+            10
+          ]
+        },
+        {
+          "sku": "B",
+          "annual_value": 20,
+          "demand": [
+            0,
+            10,
+            20
+          ]
+        }
+      ],
+      "abc_a": 0.98,
+      "abc_b": 0.95,
+      "xyz_x": 0.2,
+      "xyz_y": 0.5
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "ABC阈值需0<A<B<1"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

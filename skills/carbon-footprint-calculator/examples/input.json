@@ -1,0 +1,13 @@
+{
+  "factor_source": "测试因子，仅用于验收",
+  "legs": [
+    {
+      "ton_km": 1000,
+      "factor_kgco2e_per_ton_km": 0.1
+    },
+    {
+      "ton_km": 500,
+      "factor_kgco2e_per_ton_km": 0.2
+    }
+  ]
+}

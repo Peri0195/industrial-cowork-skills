@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "a5c-ai/babysitter",
+  "upstream_directory": "library/specializations/domains/science/industrial-engineering/skills/time-study-analyzer",
+  "upstream_commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "upstream_directory_url": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/time-study-analyzer",
+  "upstream_files": [
+    {
+      "path": "upstream/SKILL.md",
+      "sha256": "7e765ceff3938de5efb30b554c780354bba28a632848134425022e7b4471b867",
+      "source_url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/time-study-analyzer/SKILL.md"
+    }
+  ],
+  "adaptation": "新增中文入口及明确范围的标准库脚本；完整上游目录另存upstream，不把新增代码冒充上游原件。",
+  "execution_scope": "将重复观测的操作时间按评比系数及宽放率换算为标准时间。",
+  "limitation": "不自动推断劳动强度或宽放率，评比和宽放必须由用户提供。",
+  "license": "上游MIT声明保留于LICENSE.upstream.md；新增适配采用MIT。"
+}

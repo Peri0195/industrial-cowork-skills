@@ -1,0 +1,63 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "counts": {
+        "划伤": 50,
+        "尺寸": 30,
+        "其他": 20
+      },
+      "target_fraction": 0.8
+    },
+    "expected": {
+      "total": 100,
+      "priority_categories": [
+        "划伤",
+        "尺寸"
+      ]
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "counts": {
+        "划伤": 50,
+        "尺寸": 30,
+        "其他": 20
+      },
+      "target_fraction": 1
+    },
+    "expected": {
+      "priority_categories": [
+        "划伤",
+        "尺寸",
+        "其他"
+      ]
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "counts": {
+        "A": 0
+      },
+      "target_fraction": 0.8
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

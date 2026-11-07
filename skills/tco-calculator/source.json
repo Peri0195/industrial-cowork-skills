@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "a5c-ai/babysitter",
+  "upstream_directory": "library/specializations/domains/business/supply-chain/skills/tco-calculator",
+  "upstream_commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "upstream_directory_url": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/supply-chain/skills/tco-calculator",
+  "upstream_files": [
+    {
+      "path": "upstream/SKILL.md",
+      "sha256": "2b5b4a45fece57f146b7448bd5b632700896e7400a471d18a1fa2422008e56cb",
+      "source_url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/supply-chain/skills/tco-calculator/SKILL.md"
+    }
+  ],
+  "adaptation": "新增中文入口及明确范围的标准库脚本；完整上游目录另存upstream，不把新增代码冒充上游原件。",
+  "execution_scope": "按购置成本、逐年运行成本、折现率及期末残值计算同一持有期的TCO现值。",
+  "limitation": "只按用户输入计算，不提供税务、融资或投资建议。",
+  "license": "上游MIT声明保留于LICENSE.upstream.md；新增适配采用MIT。"
+}

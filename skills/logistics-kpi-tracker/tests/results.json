@@ -1,0 +1,104 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "orders": [
+        {
+          "id": "1",
+          "on_time": true,
+          "in_full": true
+        },
+        {
+          "id": "2",
+          "on_time": true,
+          "in_full": false
+        },
+        {
+          "id": "3",
+          "on_time": false,
+          "in_full": true
+        },
+        {
+          "id": "4",
+          "on_time": true,
+          "in_full": true
+        }
+      ]
+    },
+    "expected": {
+      "on_time_pct": 75,
+      "in_full_pct": 75,
+      "otif_pct": 50
+    },
+    "actual": {
+      "on_time_pct": 75.0,
+      "in_full_pct": 75.0,
+      "otif_pct": 50.0
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'orders'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "orders": [
+        {
+          "id": "A",
+          "on_time": false,
+          "in_full": false
+        }
+      ]
+    },
+    "expected": {
+      "otif_pct": 0
+    },
+    "actual": {
+      "on_time_pct": 0.0,
+      "in_full_pct": 0.0,
+      "otif_pct": 0.0
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "orders": [
+        {
+          "id": "A",
+          "on_time": "false",
+          "in_full": true
+        }
+      ]
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "状态必须为布尔值"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

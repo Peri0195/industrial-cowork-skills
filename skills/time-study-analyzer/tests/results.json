@@ -1,0 +1,88 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "observations_minutes": [
+        4,
+        5,
+        6
+      ],
+      "rating_factor": 1.1,
+      "allowance_fraction": 0.1
+    },
+    "expected": {
+      "normal_minutes": 5.5,
+      "standard_minutes": 6.111111111111111
+    },
+    "actual": {
+      "observed_mean": 5,
+      "normal_minutes": 5.5,
+      "standard_minutes": 6.111111111111111
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'observations_minutes'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "observations_minutes": [
+        4,
+        5,
+        6
+      ],
+      "rating_factor": 1.1,
+      "allowance_fraction": 0
+    },
+    "expected": {
+      "standard_minutes": 5.5
+    },
+    "actual": {
+      "observed_mean": 5,
+      "normal_minutes": 5.5,
+      "standard_minutes": 5.5
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "observations_minutes": [
+        4,
+        5,
+        6
+      ],
+      "rating_factor": 1.1,
+      "allowance_fraction": 1
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "allowance_fraction: 必须小于1"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

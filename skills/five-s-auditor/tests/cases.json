@@ -1,0 +1,68 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "items": [
+        {
+          "id": "清扫",
+          "score": 3,
+          "max_score": 5
+        },
+        {
+          "id": "整理",
+          "score": 5,
+          "max_score": 5
+        }
+      ]
+    },
+    "expected": {
+      "score_pct": 80,
+      "gaps": [
+        "清扫"
+      ]
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "items": [
+        {
+          "id": "A",
+          "score": 0,
+          "max_score": 10
+        }
+      ]
+    },
+    "expected": {
+      "score_pct": 0
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "items": [
+        {
+          "id": "A",
+          "score": 11,
+          "max_score": 10
+        }
+      ]
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

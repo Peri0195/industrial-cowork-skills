@@ -1,0 +1,87 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "layouts": {
+        "A": [
+          {
+            "flow": 10,
+            "distance": 20
+          },
+          {
+            "flow": 5,
+            "distance": 10
+          }
+        ],
+        "B": [
+          {
+            "flow": 10,
+            "distance": 10
+          },
+          {
+            "flow": 5,
+            "distance": 20
+          }
+        ]
+      }
+    },
+    "expected": {
+      "best_layout": "B",
+      "load_distance": {
+        "A": 250,
+        "B": 200
+      }
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "layouts": {
+        "A": [
+          {
+            "flow": 0,
+            "distance": 2
+          }
+        ],
+        "B": [
+          {
+            "flow": 1,
+            "distance": 1
+          }
+        ]
+      }
+    },
+    "expected": {
+      "best_layout": "A"
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "layouts": {
+        "A": [
+          {
+            "flow": -1,
+            "distance": 2
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

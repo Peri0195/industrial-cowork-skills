@@ -1,0 +1,91 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "weights": {
+        "quality": 0.6,
+        "delivery": 0.4
+      },
+      "suppliers": {
+        "A": {
+          "quality": 90,
+          "delivery": 80
+        },
+        "B": {
+          "quality": 80,
+          "delivery": 90
+        }
+      }
+    },
+    "expected": {
+      "scores": {
+        "A": 86,
+        "B": 84
+      },
+      "ranking": [
+        "A",
+        "B"
+      ]
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "weights": {
+        "quality": 1,
+        "delivery": 0
+      },
+      "suppliers": {
+        "A": {
+          "quality": 90,
+          "delivery": 80
+        },
+        "B": {
+          "quality": 80,
+          "delivery": 90
+        }
+      }
+    },
+    "expected": {
+      "scores": {
+        "A": 90,
+        "B": 80
+      }
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "weights": {
+        "quality": 0.2,
+        "delivery": 0.2
+      },
+      "suppliers": {
+        "A": {
+          "quality": 90,
+          "delivery": 80
+        },
+        "B": {
+          "quality": 80,
+          "delivery": 90
+        }
+      }
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

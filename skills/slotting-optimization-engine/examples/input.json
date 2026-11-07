@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "sku": "A",
+      "picks": 10
+    },
+    {
+      "sku": "B",
+      "picks": 5
+    }
+  ],
+  "slots": [
+    {
+      "slot": "near",
+      "distance": 2
+    },
+    {
+      "slot": "far",
+      "distance": 8
+    }
+  ]
+}

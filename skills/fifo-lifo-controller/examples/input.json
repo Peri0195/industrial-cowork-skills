@@ -1,0 +1,16 @@
+{
+  "method": "FIFO",
+  "quantity": 7,
+  "batches": [
+    {
+      "id": "A",
+      "received": "2026-10-01",
+      "quantity": 5
+    },
+    {
+      "id": "B",
+      "received": "2026-10-02",
+      "quantity": 8
+    }
+  ]
+}

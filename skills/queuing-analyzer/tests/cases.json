@@ -1,0 +1,48 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "arrivals_per_hour": 4,
+      "service_per_hour": 6
+    },
+    "expected": {
+      "utilization": 0.6666666666666666,
+      "queue_length": 1.3333333333333333,
+      "wait_hours": 0.3333333333333333
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "arrivals_per_hour": 3,
+      "service_per_hour": 6
+    },
+    "expected": {
+      "queue_length": 0.5,
+      "wait_hours": 0.16666666666666666
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "arrivals_per_hour": 6,
+      "service_per_hour": 6
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

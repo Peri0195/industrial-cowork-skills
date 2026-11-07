@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "a5c-ai/babysitter",
+  "upstream_directory": "library/specializations/domains/science/industrial-engineering/skills/queuing-analyzer",
+  "upstream_commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "upstream_directory_url": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/queuing-analyzer",
+  "upstream_files": [
+    {
+      "path": "upstream/SKILL.md",
+      "sha256": "96c079f1b6148def3d6efe79d10f7042edca1e3908c4077050b5ed39f2350964",
+      "source_url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/queuing-analyzer/SKILL.md"
+    }
+  ],
+  "adaptation": "新增中文入口及明确范围的标准库脚本；完整上游目录另存upstream，不把新增代码冒充上游原件。",
+  "execution_scope": "在M/M/1假设下，按到达率和服务率计算平均队长、等待和逗留时间。",
+  "limitation": "仅适用于单服务台、泊松到达、指数服务时间、无限等待容量的稳定模型。",
+  "license": "上游MIT声明保留于LICENSE.upstream.md；新增适配采用MIT。"
+}

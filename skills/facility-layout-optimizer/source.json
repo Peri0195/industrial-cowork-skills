@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "a5c-ai/babysitter",
+  "upstream_directory": "library/specializations/domains/science/industrial-engineering/skills/facility-layout-optimizer",
+  "upstream_commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "upstream_directory_url": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/facility-layout-optimizer",
+  "upstream_files": [
+    {
+      "path": "upstream/SKILL.md",
+      "sha256": "a0044d3e4c3bcd03280ce166bb09195f2f211b6ae022a24f30414e859b2b003d",
+      "source_url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/facility-layout-optimizer/SKILL.md"
+    }
+  ],
+  "adaptation": "新增中文入口及明确范围的标准库脚本；完整上游目录另存upstream，不把新增代码冒充上游原件。",
+  "execution_scope": "按各布局的运输频次和距离计算流量距离指标，比较候选布局。",
+  "limitation": "只比较用户提供的布局，不生成几何布局或保证全局最优。",
+  "license": "上游MIT声明保留于LICENSE.upstream.md；新增适配采用MIT。"
+}

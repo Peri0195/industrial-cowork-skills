@@ -1,0 +1,53 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "mean_daily": 100,
+      "std_daily": 10,
+      "lead_days": 9,
+      "z": 2
+    },
+    "expected": {
+      "safety_stock": 60,
+      "reorder_point": 960
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "mean_daily": 100,
+      "std_daily": 0,
+      "lead_days": 9,
+      "z": 2
+    },
+    "expected": {
+      "safety_stock": 0,
+      "reorder_point": 900
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "mean_daily": 100,
+      "std_daily": 10,
+      "lead_days": 0,
+      "z": 2
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

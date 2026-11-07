@@ -1,0 +1,116 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "shipments": [
+        {
+          "carrier": "A",
+          "amount": 100,
+          "ton_km": 50
+        },
+        {
+          "carrier": "A",
+          "amount": 200,
+          "ton_km": 50
+        },
+        {
+          "carrier": "B",
+          "amount": 100,
+          "ton_km": 100
+        }
+      ]
+    },
+    "expected": {
+      "total_amount": 400,
+      "cost_per_ton_km": 2
+    },
+    "actual": {
+      "total_amount": 400,
+      "cost_per_ton_km": 2.0,
+      "carriers": {
+        "A": {
+          "amount": 300,
+          "ton_km": 100,
+          "cost_per_ton_km": 3.0
+        },
+        "B": {
+          "amount": 100,
+          "ton_km": 100,
+          "cost_per_ton_km": 1.0
+        }
+      }
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'shipments'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "shipments": [
+        {
+          "carrier": "A",
+          "amount": 0,
+          "ton_km": 100
+        }
+      ]
+    },
+    "expected": {
+      "total_amount": 0,
+      "cost_per_ton_km": 0
+    },
+    "actual": {
+      "total_amount": 0,
+      "cost_per_ton_km": 0.0,
+      "carriers": {
+        "A": {
+          "amount": 0,
+          "ton_km": 100,
+          "cost_per_ton_km": 0.0
+        }
+      }
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "shipments": [
+        {
+          "carrier": "A",
+          "amount": 1,
+          "ton_km": 0
+        }
+      ]
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "ton_km: 必须大于0"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "required": [
+    "sku",
+    "unit"
+  ],
+  "allowed_units": [
+    "件",
+    "kg"
+  ],
+  "items": [
+    {
+      "sku": "A",
+      "unit": "件"
+    },
+    {
+      "sku": "A",
+      "unit": ""
+    },
+    {
+      "sku": "B",
+      "unit": "box"
+    }
+  ]
+}

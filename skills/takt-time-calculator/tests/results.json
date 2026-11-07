@@ -1,0 +1,77 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "available_minutes": 420,
+      "demand_units": 210,
+      "cycle_minutes": 2.5
+    },
+    "expected": {
+      "takt_minutes": 2,
+      "gap_minutes": 0.5
+    },
+    "actual": {
+      "takt_minutes": 2.0,
+      "gap_minutes": 0.5,
+      "meets_takt": false
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'available_minutes'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "available_minutes": 420,
+      "demand_units": 420,
+      "cycle_minutes": 2.5
+    },
+    "expected": {
+      "takt_minutes": 1,
+      "gap_minutes": 1.5
+    },
+    "actual": {
+      "takt_minutes": 1.0,
+      "gap_minutes": 1.5,
+      "meets_takt": false
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "available_minutes": 420,
+      "demand_units": 0,
+      "cycle_minutes": 2.5
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "demand_units: 必须大于0"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

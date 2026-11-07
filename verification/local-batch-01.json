@@ -1,0 +1,3097 @@
+[
+  {
+    "skill": "takt-time-calculator",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "available_minutes": 420,
+          "demand_units": 210,
+          "cycle_minutes": 2.5
+        },
+        "expected": {
+          "takt_minutes": 2,
+          "gap_minutes": 0.5
+        },
+        "actual": {
+          "takt_minutes": 2.0,
+          "gap_minutes": 0.5,
+          "meets_takt": false
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'available_minutes'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "available_minutes": 420,
+          "demand_units": 420,
+          "cycle_minutes": 2.5
+        },
+        "expected": {
+          "takt_minutes": 1,
+          "gap_minutes": 1.5
+        },
+        "actual": {
+          "takt_minutes": 1.0,
+          "gap_minutes": 1.5,
+          "meets_takt": false
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "available_minutes": 420,
+          "demand_units": 0,
+          "cycle_minutes": 2.5
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "demand_units: 必须大于0"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "time-study-analyzer",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "observations_minutes": [
+            4,
+            5,
+            6
+          ],
+          "rating_factor": 1.1,
+          "allowance_fraction": 0.1
+        },
+        "expected": {
+          "normal_minutes": 5.5,
+          "standard_minutes": 6.111111111111111
+        },
+        "actual": {
+          "observed_mean": 5,
+          "normal_minutes": 5.5,
+          "standard_minutes": 6.111111111111111
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'observations_minutes'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "observations_minutes": [
+            4,
+            5,
+            6
+          ],
+          "rating_factor": 1.1,
+          "allowance_fraction": 0
+        },
+        "expected": {
+          "standard_minutes": 5.5
+        },
+        "actual": {
+          "observed_mean": 5,
+          "normal_minutes": 5.5,
+          "standard_minutes": 5.5
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "observations_minutes": [
+            4,
+            5,
+            6
+          ],
+          "rating_factor": 1.1,
+          "allowance_fraction": 1
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "allowance_fraction: 必须小于1"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "work-sampling-analyzer",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "working_observations": 80,
+          "total_observations": 100
+        },
+        "expected": {
+          "utilization_pct": 80
+        },
+        "actual": {
+          "utilization_pct": 80.0,
+          "lower95_pct": 71.11708344068411,
+          "upper95_pct": 86.66330666689676
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'total_observations'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "working_observations": 0,
+          "total_observations": 100
+        },
+        "expected": {
+          "utilization_pct": 0
+        },
+        "actual": {
+          "utilization_pct": 0.0,
+          "lower95_pct": 3.469446951953614e-16,
+          "upper95_pct": 3.699349820698568
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "working_observations": 101,
+          "total_observations": 100
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "工作次数超过总次数"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "line-balancer",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "station_minutes": [
+            4,
+            5,
+            3
+          ]
+        },
+        "expected": {
+          "cycle_minutes": 5,
+          "efficiency_pct": 80,
+          "idle_minutes": 3
+        },
+        "actual": {
+          "cycle_minutes": 5,
+          "efficiency_pct": 80.0,
+          "idle_minutes": 3
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'station_minutes'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "station_minutes": [
+            3,
+            3,
+            3
+          ]
+        },
+        "expected": {
+          "efficiency_pct": 100,
+          "idle_minutes": 0
+        },
+        "actual": {
+          "cycle_minutes": 3,
+          "efficiency_pct": 100.0,
+          "idle_minutes": 0
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "station_minutes": [
+            0,
+            0
+          ]
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "工位时间不能全为0"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "smed-analyzer",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "before_internal_minutes": [
+            10,
+            20,
+            5
+          ],
+          "after_internal_minutes": [
+            8,
+            10,
+            2
+          ]
+        },
+        "expected": {
+          "saved_minutes": 15,
+          "reduction_pct": 42.857142857142854
+        },
+        "actual": {
+          "before_minutes": 35,
+          "after_minutes": 20,
+          "saved_minutes": 15,
+          "reduction_pct": 42.857142857142854
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'before_internal_minutes'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "before_internal_minutes": [
+            10,
+            20,
+            5
+          ],
+          "after_internal_minutes": [
+            40
+          ]
+        },
+        "expected": {
+          "saved_minutes": -5
+        },
+        "actual": {
+          "before_minutes": 35,
+          "after_minutes": 40,
+          "saved_minutes": -5,
+          "reduction_pct": -14.285714285714285
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "before_internal_minutes": [
+            0
+          ],
+          "after_internal_minutes": [
+            8,
+            10,
+            2
+          ]
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "改善前时间必须大于0"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "pareto-analyzer",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "counts": {
+            "划伤": 50,
+            "尺寸": 30,
+            "其他": 20
+          },
+          "target_fraction": 0.8
+        },
+        "expected": {
+          "total": 100,
+          "priority_categories": [
+            "划伤",
+            "尺寸"
+          ]
+        },
+        "actual": {
+          "total": 100,
+          "priority_categories": [
+            "划伤",
+            "尺寸"
+          ],
+          "rows": [
+            {
+              "category": "划伤",
+              "count": 50,
+              "cumulative_pct": 50.0
+            },
+            {
+              "category": "尺寸",
+              "count": 30,
+              "cumulative_pct": 80.0
+            },
+            {
+              "category": "其他",
+              "count": 20,
+              "cumulative_pct": 100.0
+            }
+          ]
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'counts'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "counts": {
+            "划伤": 50,
+            "尺寸": 30,
+            "其他": 20
+          },
+          "target_fraction": 1
+        },
+        "expected": {
+          "priority_categories": [
+            "划伤",
+            "尺寸",
+            "其他"
+          ]
+        },
+        "actual": {
+          "total": 100,
+          "priority_categories": [
+            "划伤",
+            "尺寸",
+            "其他"
+          ],
+          "rows": [
+            {
+              "category": "划伤",
+              "count": 50,
+              "cumulative_pct": 50.0
+            },
+            {
+              "category": "尺寸",
+              "count": 30,
+              "cumulative_pct": 80.0
+            },
+            {
+              "category": "其他",
+              "count": 20,
+              "cumulative_pct": 100.0
+            }
+          ]
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "counts": {
+            "A": 0
+          },
+          "target_fraction": 0.8
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "总数量必须大于0"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "five-s-auditor",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "items": [
+            {
+              "id": "清扫",
+              "score": 3,
+              "max_score": 5
+            },
+            {
+              "id": "整理",
+              "score": 5,
+              "max_score": 5
+            }
+          ]
+        },
+        "expected": {
+          "score_pct": 80,
+          "gaps": [
+            "清扫"
+          ]
+        },
+        "actual": {
+          "score_pct": 80.0,
+          "gaps": [
+            "清扫"
+          ]
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'items'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "items": [
+            {
+              "id": "A",
+              "score": 0,
+              "max_score": 10
+            }
+          ]
+        },
+        "expected": {
+          "score_pct": 0
+        },
+        "actual": {
+          "score_pct": 0.0,
+          "gaps": [
+            "A"
+          ]
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "items": [
+            {
+              "id": "A",
+              "score": 11,
+              "max_score": 10
+            }
+          ]
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "得分超过满分"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "queuing-analyzer",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "arrivals_per_hour": 4,
+          "service_per_hour": 6
+        },
+        "expected": {
+          "utilization": 0.6666666666666666,
+          "queue_length": 1.3333333333333333,
+          "wait_hours": 0.3333333333333333
+        },
+        "actual": {
+          "utilization": 0.6666666666666666,
+          "queue_length": 1.333333333333333,
+          "system_length": 2.0,
+          "wait_hours": 0.3333333333333333,
+          "sojourn_hours": 0.5
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'arrivals_per_hour'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "arrivals_per_hour": 3,
+          "service_per_hour": 6
+        },
+        "expected": {
+          "queue_length": 0.5,
+          "wait_hours": 0.16666666666666666
+        },
+        "actual": {
+          "utilization": 0.5,
+          "queue_length": 0.5,
+          "system_length": 1.0,
+          "wait_hours": 0.16666666666666666,
+          "sojourn_hours": 0.3333333333333333
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "arrivals_per_hour": 6,
+          "service_per_hour": 6
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "到达率必须小于服务率，系统否则无稳态"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "decision-tree-analyzer",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "options": {
+            "A": [
+              {
+                "p": 0.5,
+                "payoff": 100
+              },
+              {
+                "p": 0.5,
+                "payoff": 0
+              }
+            ],
+            "B": [
+              {
+                "p": 1,
+                "payoff": 40
+              }
+            ]
+          }
+        },
+        "expected": {
+          "best_option": "A",
+          "expected_values": {
+            "A": 50,
+            "B": 40
+          }
+        },
+        "actual": {
+          "best_option": "A",
+          "expected_values": {
+            "A": 50.0,
+            "B": 40
+          }
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'options'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "options": {
+            "A": [
+              {
+                "p": 1,
+                "payoff": -10
+              }
+            ],
+            "B": [
+              {
+                "p": 1,
+                "payoff": -5
+              }
+            ]
+          }
+        },
+        "expected": {
+          "best_option": "B"
+        },
+        "actual": {
+          "best_option": "B",
+          "expected_values": {
+            "A": -10,
+            "B": -5
+          }
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "options": {
+            "A": [
+              {
+                "p": 0.8,
+                "payoff": 5
+              }
+            ]
+          }
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "概率和必须为1"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "facility-layout-optimizer",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "layouts": {
+            "A": [
+              {
+                "flow": 10,
+                "distance": 20
+              },
+              {
+                "flow": 5,
+                "distance": 10
+              }
+            ],
+            "B": [
+              {
+                "flow": 10,
+                "distance": 10
+              },
+              {
+                "flow": 5,
+                "distance": 20
+              }
+            ]
+          }
+        },
+        "expected": {
+          "best_layout": "B",
+          "load_distance": {
+            "A": 250,
+            "B": 200
+          }
+        },
+        "actual": {
+          "best_layout": "B",
+          "load_distance": {
+            "A": 250,
+            "B": 200
+          }
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'layouts'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "layouts": {
+            "A": [
+              {
+                "flow": 0,
+                "distance": 2
+              }
+            ],
+            "B": [
+              {
+                "flow": 1,
+                "distance": 1
+              }
+            ]
+          }
+        },
+        "expected": {
+          "best_layout": "A"
+        },
+        "actual": {
+          "best_layout": "A",
+          "load_distance": {
+            "A": 0,
+            "B": 1
+          }
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "layouts": {
+            "A": [
+              {
+                "flow": -1,
+                "distance": 2
+              }
+            ]
+          }
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "flow: 必须非负"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "abc-xyz-classifier",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "items": [
+            {
+              "sku": "A",
+              "annual_value": 80,
+              "demand": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "sku": "B",
+              "annual_value": 20,
+              "demand": [
+                0,
+                10,
+                20
+              ]
+            }
+          ],
+          "abc_a": 0.8,
+          "abc_b": 0.95,
+          "xyz_x": 0.2,
+          "xyz_y": 0.5
+        },
+        "expected": {
+          "classes": {
+            "A": "AX",
+            "B": "BZ"
+          }
+        },
+        "actual": {
+          "classes": {
+            "A": "AX",
+            "B": "BZ"
+          }
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'items'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "items": [
+            {
+              "sku": "A",
+              "annual_value": 100,
+              "demand": [
+                0,
+                0
+              ]
+            }
+          ],
+          "abc_a": 0.8,
+          "abc_b": 0.95,
+          "xyz_x": 0.2,
+          "xyz_y": 0.5
+        },
+        "expected": {
+          "classes": {
+            "A": "AZ"
+          }
+        },
+        "actual": {
+          "classes": {
+            "A": "AZ"
+          }
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "items": [
+            {
+              "sku": "A",
+              "annual_value": 80,
+              "demand": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "sku": "B",
+              "annual_value": 20,
+              "demand": [
+                0,
+                10,
+                20
+              ]
+            }
+          ],
+          "abc_a": 0.98,
+          "abc_b": 0.95,
+          "xyz_x": 0.2,
+          "xyz_y": 0.5
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "ABC阈值需0<A<B<1"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "cycle-count-scheduler",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "as_of": "2026-11-07",
+          "items": [
+            {
+              "sku": "A",
+              "last_count": "2026-10-01",
+              "interval_days": 30,
+              "book": 100,
+              "actual": 98
+            },
+            {
+              "sku": "B",
+              "last_count": "2026-11-01",
+              "interval_days": 30,
+              "book": 10,
+              "actual": 10
+            }
+          ]
+        },
+        "expected": {
+          "due_skus": [
+            "A"
+          ],
+          "variance": {
+            "A": -2,
+            "B": 0
+          }
+        },
+        "actual": {
+          "due_skus": [
+            "A"
+          ],
+          "variance": {
+            "A": -2,
+            "B": 0
+          }
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'as_of'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "as_of": "2026-10-31",
+          "items": [
+            {
+              "sku": "A",
+              "last_count": "2026-10-01",
+              "interval_days": 30,
+              "book": 1,
+              "actual": 1
+            }
+          ]
+        },
+        "expected": {
+          "due_skus": [
+            "A"
+          ]
+        },
+        "actual": {
+          "due_skus": [
+            "A"
+          ],
+          "variance": {
+            "A": 0
+          }
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "as_of": "2020-01-01",
+          "items": [
+            {
+              "sku": "A",
+              "last_count": "2026-10-01",
+              "interval_days": 30,
+              "book": 100,
+              "actual": 98
+            },
+            {
+              "sku": "B",
+              "last_count": "2026-11-01",
+              "interval_days": 30,
+              "book": 10,
+              "actual": 10
+            }
+          ]
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "盘点日期晚于统计日"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "dead-stock-identifier",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "as_of": "2026-11-07",
+          "threshold_days": 90,
+          "items": [
+            {
+              "sku": "A",
+              "last_issue": "2026-07-01",
+              "quantity": 10,
+              "unit_cost": 8
+            },
+            {
+              "sku": "B",
+              "last_issue": "2026-11-01",
+              "quantity": 20,
+              "unit_cost": 2
+            }
+          ]
+        },
+        "expected": {
+          "flagged_skus": [
+            "A"
+          ],
+          "book_value": 80
+        },
+        "actual": {
+          "flagged_skus": [
+            "A"
+          ],
+          "book_value": 80
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'as_of'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "as_of": "2026-11-07",
+          "threshold_days": 90,
+          "items": [
+            {
+              "sku": "A",
+              "last_issue": "2026-01-01",
+              "quantity": 0,
+              "unit_cost": 5
+            }
+          ]
+        },
+        "expected": {
+          "flagged_skus": [],
+          "book_value": 0
+        },
+        "actual": {
+          "flagged_skus": [],
+          "book_value": 0
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "as_of": "2026-11-07",
+          "threshold_days": 0,
+          "items": [
+            {
+              "sku": "A",
+              "last_issue": "2026-07-01",
+              "quantity": 10,
+              "unit_cost": 8
+            },
+            {
+              "sku": "B",
+              "last_issue": "2026-11-01",
+              "quantity": 20,
+              "unit_cost": 2
+            }
+          ]
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "threshold_days: 必须大于0"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "fifo-lifo-controller",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "method": "FIFO",
+          "quantity": 7,
+          "batches": [
+            {
+              "id": "A",
+              "received": "2026-10-01",
+              "quantity": 5
+            },
+            {
+              "id": "B",
+              "received": "2026-10-02",
+              "quantity": 8
+            }
+          ]
+        },
+        "expected": {
+          "allocation": {
+            "A": 5,
+            "B": 2
+          },
+          "shortage": 0
+        },
+        "actual": {
+          "allocation": {
+            "A": 5,
+            "B": 2
+          },
+          "shortage": 0
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'method'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "method": "FIFO",
+          "quantity": 20,
+          "batches": [
+            {
+              "id": "A",
+              "received": "2026-10-01",
+              "quantity": 5
+            },
+            {
+              "id": "B",
+              "received": "2026-10-02",
+              "quantity": 8
+            }
+          ]
+        },
+        "expected": {
+          "shortage": 7,
+          "allocation": {
+            "A": 5,
+            "B": 8
+          }
+        },
+        "actual": {
+          "allocation": {
+            "A": 5,
+            "B": 8
+          },
+          "shortage": 7
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "method": "UNKNOWN",
+          "quantity": 7,
+          "batches": [
+            {
+              "id": "A",
+              "received": "2026-10-01",
+              "quantity": 5
+            },
+            {
+              "id": "B",
+              "received": "2026-10-02",
+              "quantity": 8
+            }
+          ]
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "不支持的出库规则"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "freight-audit-validator",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "quantity": 12,
+          "unit_rate": 10,
+          "approved_surcharges": 5,
+          "invoiced": 130,
+          "tolerance": 0.01
+        },
+        "expected": {
+          "expected_amount": 125,
+          "difference": 5,
+          "flagged": true
+        },
+        "actual": {
+          "expected_amount": 125,
+          "difference": 5,
+          "flagged": true
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'quantity'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "quantity": 12,
+          "unit_rate": 10,
+          "approved_surcharges": 5,
+          "invoiced": 125,
+          "tolerance": 0.01
+        },
+        "expected": {
+          "difference": 0,
+          "flagged": false
+        },
+        "actual": {
+          "expected_amount": 125,
+          "difference": 0,
+          "flagged": false
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "quantity": -1,
+          "unit_rate": 10,
+          "approved_surcharges": 5,
+          "invoiced": 130,
+          "tolerance": 0.01
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "quantity: 必须非负"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "load-optimization-calculator",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "weight_kg": 8000,
+          "volume_m3": 30,
+          "weight_capacity_kg": 10000,
+          "volume_capacity_m3": 60
+        },
+        "expected": {
+          "weight_utilization_pct": 80,
+          "volume_utilization_pct": 50,
+          "over_capacity": false
+        },
+        "actual": {
+          "weight_utilization_pct": 80.0,
+          "volume_utilization_pct": 50.0,
+          "over_capacity": false
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'weight_kg'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "weight_kg": 11000,
+          "volume_m3": 30,
+          "weight_capacity_kg": 10000,
+          "volume_capacity_m3": 60
+        },
+        "expected": {
+          "weight_utilization_pct": 110,
+          "over_capacity": true
+        },
+        "actual": {
+          "weight_utilization_pct": 110.00000000000001,
+          "volume_utilization_pct": 50.0,
+          "over_capacity": true
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "weight_kg": 8000,
+          "volume_m3": 30,
+          "weight_capacity_kg": 0,
+          "volume_capacity_m3": 60
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "weight_capacity_kg: 必须大于0"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "logistics-kpi-tracker",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "orders": [
+            {
+              "id": "1",
+              "on_time": true,
+              "in_full": true
+            },
+            {
+              "id": "2",
+              "on_time": true,
+              "in_full": false
+            },
+            {
+              "id": "3",
+              "on_time": false,
+              "in_full": true
+            },
+            {
+              "id": "4",
+              "on_time": true,
+              "in_full": true
+            }
+          ]
+        },
+        "expected": {
+          "on_time_pct": 75,
+          "in_full_pct": 75,
+          "otif_pct": 50
+        },
+        "actual": {
+          "on_time_pct": 75.0,
+          "in_full_pct": 75.0,
+          "otif_pct": 50.0
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'orders'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "orders": [
+            {
+              "id": "A",
+              "on_time": false,
+              "in_full": false
+            }
+          ]
+        },
+        "expected": {
+          "otif_pct": 0
+        },
+        "actual": {
+          "on_time_pct": 0.0,
+          "in_full_pct": 0.0,
+          "otif_pct": 0.0
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "orders": [
+            {
+              "id": "A",
+              "on_time": "false",
+              "in_full": true
+            }
+          ]
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "状态必须为布尔值"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "safety-stock-calculator",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "mean_daily": 100,
+          "std_daily": 10,
+          "lead_days": 9,
+          "z": 2
+        },
+        "expected": {
+          "safety_stock": 60,
+          "reorder_point": 960
+        },
+        "actual": {
+          "safety_stock": 60.0,
+          "reorder_point": 960.0
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'mean_daily'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "mean_daily": 100,
+          "std_daily": 0,
+          "lead_days": 9,
+          "z": 2
+        },
+        "expected": {
+          "safety_stock": 0,
+          "reorder_point": 900
+        },
+        "actual": {
+          "safety_stock": 0.0,
+          "reorder_point": 900.0
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "mean_daily": 100,
+          "std_daily": 10,
+          "lead_days": 0,
+          "z": 2
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "lead_days: 必须大于0"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "slotting-optimization-engine",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "items": [
+            {
+              "sku": "A",
+              "picks": 10
+            },
+            {
+              "sku": "B",
+              "picks": 5
+            }
+          ],
+          "slots": [
+            {
+              "slot": "near",
+              "distance": 2
+            },
+            {
+              "slot": "far",
+              "distance": 8
+            }
+          ]
+        },
+        "expected": {
+          "assignment": {
+            "A": "near",
+            "B": "far"
+          },
+          "weighted_distance": 60
+        },
+        "actual": {
+          "assignment": {
+            "A": "near",
+            "B": "far"
+          },
+          "weighted_distance": 60
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'items'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "items": [
+            {
+              "sku": "A",
+              "picks": 1
+            }
+          ],
+          "slots": [
+            {
+              "slot": "Z",
+              "distance": 0
+            }
+          ]
+        },
+        "expected": {
+          "assignment": {
+            "A": "Z"
+          },
+          "weighted_distance": 0
+        },
+        "actual": {
+          "assignment": {
+            "A": "Z"
+          },
+          "weighted_distance": 0
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "items": [
+            {
+              "sku": "A",
+              "picks": 10
+            },
+            {
+              "sku": "B",
+              "picks": 5
+            }
+          ],
+          "slots": [
+            {
+              "slot": "X",
+              "distance": 2
+            }
+          ]
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "SKU与库位数须相等"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "transportation-spend-analyzer",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "shipments": [
+            {
+              "carrier": "A",
+              "amount": 100,
+              "ton_km": 50
+            },
+            {
+              "carrier": "A",
+              "amount": 200,
+              "ton_km": 50
+            },
+            {
+              "carrier": "B",
+              "amount": 100,
+              "ton_km": 100
+            }
+          ]
+        },
+        "expected": {
+          "total_amount": 400,
+          "cost_per_ton_km": 2
+        },
+        "actual": {
+          "total_amount": 400,
+          "cost_per_ton_km": 2.0,
+          "carriers": {
+            "A": {
+              "amount": 300,
+              "ton_km": 100,
+              "cost_per_ton_km": 3.0
+            },
+            "B": {
+              "amount": 100,
+              "ton_km": 100,
+              "cost_per_ton_km": 1.0
+            }
+          }
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'shipments'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "shipments": [
+            {
+              "carrier": "A",
+              "amount": 0,
+              "ton_km": 100
+            }
+          ]
+        },
+        "expected": {
+          "total_amount": 0,
+          "cost_per_ton_km": 0
+        },
+        "actual": {
+          "total_amount": 0,
+          "cost_per_ton_km": 0.0,
+          "carriers": {
+            "A": {
+              "amount": 0,
+              "ton_km": 100,
+              "cost_per_ton_km": 0.0
+            }
+          }
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "shipments": [
+            {
+              "carrier": "A",
+              "amount": 1,
+              "ton_km": 0
+            }
+          ]
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "ton_km: 必须大于0"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "forecast-accuracy-analyzer",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "actual": [
+            100,
+            200
+          ],
+          "forecast": [
+            110,
+            180
+          ]
+        },
+        "expected": {
+          "mae": 15,
+          "rmse": 15.811388300841896,
+          "wape_pct": 10,
+          "bias": -5
+        },
+        "actual": {
+          "mae": 15,
+          "rmse": 15.811388300841896,
+          "wape_pct": 10.0,
+          "bias": -5
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'actual'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "actual": [
+            0,
+            0
+          ],
+          "forecast": [
+            0,
+            0
+          ]
+        },
+        "expected": {
+          "mae": 0,
+          "wape_pct": null,
+          "bias": 0
+        },
+        "actual": {
+          "mae": 0,
+          "rmse": 0.0,
+          "wape_pct": null,
+          "bias": 0
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "actual": [
+            100,
+            200
+          ],
+          "forecast": [
+            1
+          ]
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "序列长度须一致"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "supplier-scorecard-engine",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "weights": {
+            "quality": 0.6,
+            "delivery": 0.4
+          },
+          "suppliers": {
+            "A": {
+              "quality": 90,
+              "delivery": 80
+            },
+            "B": {
+              "quality": 80,
+              "delivery": 90
+            }
+          }
+        },
+        "expected": {
+          "scores": {
+            "A": 86,
+            "B": 84
+          },
+          "ranking": [
+            "A",
+            "B"
+          ]
+        },
+        "actual": {
+          "scores": {
+            "A": 86.0,
+            "B": 84.0
+          },
+          "ranking": [
+            "A",
+            "B"
+          ]
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'weights'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "weights": {
+            "quality": 1,
+            "delivery": 0
+          },
+          "suppliers": {
+            "A": {
+              "quality": 90,
+              "delivery": 80
+            },
+            "B": {
+              "quality": 80,
+              "delivery": 90
+            }
+          }
+        },
+        "expected": {
+          "scores": {
+            "A": 90,
+            "B": 80
+          }
+        },
+        "actual": {
+          "scores": {
+            "A": 90,
+            "B": 80
+          },
+          "ranking": [
+            "A",
+            "B"
+          ]
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "weights": {
+            "quality": 0.2,
+            "delivery": 0.2
+          },
+          "suppliers": {
+            "A": {
+              "quality": 90,
+              "delivery": 80
+            },
+            "B": {
+              "quality": 80,
+              "delivery": 90
+            }
+          }
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "权重和须为1"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "tco-calculator",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "initial_cost": 1000,
+          "annual_costs": [
+            110,
+            121
+          ],
+          "discount_rate": 0.1,
+          "residual_value": 121
+        },
+        "expected": {
+          "present_value_tco": 1100
+        },
+        "actual": {
+          "present_value_tco": 1100.0,
+          "years": 2
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'initial_cost'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "initial_cost": 1000,
+          "annual_costs": [
+            110,
+            121
+          ],
+          "discount_rate": 0,
+          "residual_value": 121
+        },
+        "expected": {
+          "present_value_tco": 1110
+        },
+        "actual": {
+          "present_value_tco": 1110.0,
+          "years": 2
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "initial_cost": 1000,
+          "annual_costs": [],
+          "discount_rate": 0.1,
+          "residual_value": 121
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "annual_costs: 数组过短"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "cost-to-serve-analyzer",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "handling_rate": 5,
+          "orders": [
+            {
+              "customer": "A",
+              "units": 10,
+              "direct_cost": 20,
+              "handling_events": 2
+            },
+            {
+              "customer": "A",
+              "units": 10,
+              "direct_cost": 30,
+              "handling_events": 1
+            }
+          ]
+        },
+        "expected": {
+          "customers": {
+            "A": {
+              "total_cost": 65,
+              "units": 20,
+              "cost_per_unit": 3.25
+            }
+          }
+        },
+        "actual": {
+          "customers": {
+            "A": {
+              "total_cost": 65,
+              "units": 20,
+              "cost_per_unit": 3.25
+            }
+          }
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'handling_rate'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "handling_rate": 0,
+          "orders": [
+            {
+              "customer": "A",
+              "units": 10,
+              "direct_cost": 20,
+              "handling_events": 2
+            },
+            {
+              "customer": "A",
+              "units": 10,
+              "direct_cost": 30,
+              "handling_events": 1
+            }
+          ]
+        },
+        "expected": {
+          "customers": {
+            "A": {
+              "total_cost": 50,
+              "units": 20,
+              "cost_per_unit": 2.5
+            }
+          }
+        },
+        "actual": {
+          "customers": {
+            "A": {
+              "total_cost": 50,
+              "units": 20,
+              "cost_per_unit": 2.5
+            }
+          }
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "handling_rate": -1,
+          "orders": [
+            {
+              "customer": "A",
+              "units": 10,
+              "direct_cost": 20,
+              "handling_events": 2
+            },
+            {
+              "customer": "A",
+              "units": 10,
+              "direct_cost": 30,
+              "handling_events": 1
+            }
+          ]
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "handling_rate: 必须非负"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "capacity-constraint-analyzer",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "demand_units": 100,
+          "stations": [
+            {
+              "id": "A",
+              "available_minutes": 480,
+              "minutes_per_unit": 4
+            },
+            {
+              "id": "B",
+              "available_minutes": 480,
+              "minutes_per_unit": 6
+            }
+          ]
+        },
+        "expected": {
+          "bottleneck": "B",
+          "capacity_units": 80,
+          "shortfall_units": 20
+        },
+        "actual": {
+          "bottleneck": "B",
+          "capacity_units": 80.0,
+          "shortfall_units": 20.0,
+          "station_capacity": {
+            "A": 120.0,
+            "B": 80.0
+          }
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'stations'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "demand_units": 50,
+          "stations": [
+            {
+              "id": "A",
+              "available_minutes": 480,
+              "minutes_per_unit": 4
+            },
+            {
+              "id": "B",
+              "available_minutes": 480,
+              "minutes_per_unit": 6
+            }
+          ]
+        },
+        "expected": {
+          "shortfall_units": 0,
+          "capacity_units": 80
+        },
+        "actual": {
+          "bottleneck": "B",
+          "capacity_units": 80.0,
+          "shortfall_units": 0,
+          "station_capacity": {
+            "A": 120.0,
+            "B": 80.0
+          }
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "demand_units": 100,
+          "stations": [
+            {
+              "id": "A",
+              "available_minutes": 480,
+              "minutes_per_unit": 0
+            }
+          ]
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "minutes_per_unit: 必须大于0"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "ddmrp-buffer-manager",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "adu": 10,
+          "dlt_days": 5,
+          "lead_factor": 0.5,
+          "variability_factor": 0.5,
+          "moq": 20,
+          "order_cycle_days": 3
+        },
+        "expected": {
+          "red_zone": 37.5,
+          "yellow_zone": 50,
+          "green_zone": 30,
+          "top_green": 117.5
+        },
+        "actual": {
+          "red_zone": 37.5,
+          "yellow_zone": 50,
+          "green_zone": 30,
+          "top_green": 117.5
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'adu'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "adu": 10,
+          "dlt_days": 5,
+          "lead_factor": 0.5,
+          "variability_factor": 0.5,
+          "moq": 100,
+          "order_cycle_days": 3
+        },
+        "expected": {
+          "green_zone": 100,
+          "top_green": 187.5
+        },
+        "actual": {
+          "red_zone": 37.5,
+          "yellow_zone": 50,
+          "green_zone": 100,
+          "top_green": 187.5
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "adu": 0,
+          "dlt_days": 5,
+          "lead_factor": 0.5,
+          "variability_factor": 0.5,
+          "moq": 20,
+          "order_cycle_days": 3
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "adu: 必须大于0"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "master-data-quality-manager",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "required": [
+            "sku",
+            "unit"
+          ],
+          "allowed_units": [
+            "件",
+            "kg"
+          ],
+          "items": [
+            {
+              "sku": "A",
+              "unit": "件"
+            },
+            {
+              "sku": "A",
+              "unit": ""
+            },
+            {
+              "sku": "B",
+              "unit": "box"
+            }
+          ]
+        },
+        "expected": {
+          "duplicate_ids": [
+            "A"
+          ],
+          "missing_count": 1,
+          "invalid_unit_count": 1
+        },
+        "actual": {
+          "duplicate_ids": [
+            "A"
+          ],
+          "missing_count": 1,
+          "invalid_unit_count": 1,
+          "missing": [
+            {
+              "row": 2,
+              "field": "unit"
+            }
+          ],
+          "invalid_unit_rows": [
+            3
+          ]
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'items'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "required": [
+            "sku",
+            "unit"
+          ],
+          "allowed_units": [
+            "件",
+            "kg"
+          ],
+          "items": [
+            {
+              "sku": "A",
+              "unit": "件"
+            }
+          ]
+        },
+        "expected": {
+          "duplicate_ids": [],
+          "missing_count": 0,
+          "invalid_unit_count": 0
+        },
+        "actual": {
+          "duplicate_ids": [],
+          "missing_count": 0,
+          "invalid_unit_count": 0,
+          "missing": [],
+          "invalid_unit_rows": []
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "required": [],
+          "allowed_units": [
+            "件",
+            "kg"
+          ],
+          "items": [
+            {
+              "sku": "A",
+              "unit": "件"
+            },
+            {
+              "sku": "A",
+              "unit": ""
+            },
+            {
+              "sku": "B",
+              "unit": "box"
+            }
+          ]
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "必填字段列表无效"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "labor-productivity-optimizer",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "task_count": 600,
+          "standard_minutes": 2,
+          "utilization": 0.8,
+          "hours_per_worker": 8
+        },
+        "expected": {
+          "labor_hours": 25,
+          "workers": 4
+        },
+        "actual": {
+          "labor_hours": 25.0,
+          "workers": 4
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'task_count'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "task_count": 0,
+          "standard_minutes": 2,
+          "utilization": 0.8,
+          "hours_per_worker": 8
+        },
+        "expected": {
+          "labor_hours": 0,
+          "workers": 0
+        },
+        "actual": {
+          "labor_hours": 0.0,
+          "workers": 0
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "task_count": 600,
+          "standard_minutes": 2,
+          "utilization": 0,
+          "hours_per_worker": 8
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "利用率须大于0"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "skill": "carbon-footprint-calculator",
+    "passed": true,
+    "cases": [
+      {
+        "case": "normal",
+        "input": {
+          "factor_source": "测试因子，仅用于验收",
+          "legs": [
+            {
+              "ton_km": 1000,
+              "factor_kgco2e_per_ton_km": 0.1
+            },
+            {
+              "ton_km": 500,
+              "factor_kgco2e_per_ton_km": 0.2
+            }
+          ]
+        },
+        "expected": {
+          "kg_co2e": 200
+        },
+        "actual": {
+          "kg_co2e": 200.0,
+          "factor_source": "测试因子，仅用于验收"
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "missing",
+        "input": {},
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "'factor_source'"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "wrong-root",
+        "input": [],
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "输入必须为JSON对象"
+        },
+        "exit_code": 2,
+        "passed": true
+      },
+      {
+        "case": "boundary",
+        "input": {
+          "factor_source": "测试因子，仅用于验收",
+          "legs": [
+            {
+              "ton_km": 0,
+              "factor_kgco2e_per_ton_km": 0.2
+            }
+          ]
+        },
+        "expected": {
+          "kg_co2e": 0
+        },
+        "actual": {
+          "kg_co2e": 0.0,
+          "factor_source": "测试因子，仅用于验收"
+        },
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "invalid-business",
+        "input": {
+          "factor_source": "",
+          "legs": [
+            {
+              "ton_km": 1000,
+              "factor_kgco2e_per_ton_km": 0.1
+            },
+            {
+              "ton_km": 500,
+              "factor_kgco2e_per_ton_km": 0.2
+            }
+          ]
+        },
+        "expected": null,
+        "actual": {
+          "status": "error",
+          "message": "factor_source: 字符串不能为空"
+        },
+        "exit_code": 2,
+        "passed": true
+      }
+    ]
+  }
+]

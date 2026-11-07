@@ -1,0 +1,91 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "as_of": "2026-11-07",
+      "items": [
+        {
+          "sku": "A",
+          "last_count": "2026-10-01",
+          "interval_days": 30,
+          "book": 100,
+          "actual": 98
+        },
+        {
+          "sku": "B",
+          "last_count": "2026-11-01",
+          "interval_days": 30,
+          "book": 10,
+          "actual": 10
+        }
+      ]
+    },
+    "expected": {
+      "due_skus": [
+        "A"
+      ],
+      "variance": {
+        "A": -2,
+        "B": 0
+      }
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "as_of": "2026-10-31",
+      "items": [
+        {
+          "sku": "A",
+          "last_count": "2026-10-01",
+          "interval_days": 30,
+          "book": 1,
+          "actual": 1
+        }
+      ]
+    },
+    "expected": {
+      "due_skus": [
+        "A"
+      ]
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "as_of": "2020-01-01",
+      "items": [
+        {
+          "sku": "A",
+          "last_count": "2026-10-01",
+          "interval_days": 30,
+          "book": 100,
+          "actual": 98
+        },
+        {
+          "sku": "B",
+          "last_count": "2026-11-01",
+          "interval_days": 30,
+          "book": 10,
+          "actual": 10
+        }
+      ]
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "a5c-ai/babysitter",
+  "upstream_directory": "library/specializations/domains/science/industrial-engineering/skills/five-s-auditor",
+  "upstream_commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "upstream_directory_url": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/five-s-auditor",
+  "upstream_files": [
+    {
+      "path": "upstream/SKILL.md",
+      "sha256": "ff9f7265b21ec551d1168348d0876250a1b52c994be3404dff478365ab868bcf",
+      "source_url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/five-s-auditor/SKILL.md"
+    }
+  ],
+  "adaptation": "新增中文入口及明确范围的标准库脚本；完整上游目录另存upstream，不把新增代码冒充上游原件。",
+  "execution_scope": "按用户提供的检查项目得分和满分汇总5S检查结果，列出未满分项目。",
+  "limitation": "不从照片自动判分，不替代现场检查证据。",
+  "license": "上游MIT声明保留于LICENSE.upstream.md；新增适配采用MIT。"
+}

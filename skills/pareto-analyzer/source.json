@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "a5c-ai/babysitter",
+  "upstream_directory": "library/specializations/domains/science/industrial-engineering/skills/pareto-analyzer",
+  "upstream_commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "upstream_directory_url": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/pareto-analyzer",
+  "upstream_files": [
+    {
+      "path": "upstream/SKILL.md",
+      "sha256": "327eeb94281394c989eb888b7a7166fb985f1f2bb0cd2d05b6b904c7fb63de8d",
+      "source_url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/science/industrial-engineering/skills/pareto-analyzer/SKILL.md"
+    }
+  ],
+  "adaptation": "新增中文入口及明确范围的标准库脚本；完整上游目录另存upstream，不把新增代码冒充上游原件。",
+  "execution_scope": "对缺陷或损失类别汇总、排序，计算累计占比并标出覆盖目标比例的最小前缀。",
+  "limitation": "类别排序不是根因证明；不同单位的损失不能混合。",
+  "license": "上游MIT声明保留于LICENSE.upstream.md；新增适配采用MIT。"
+}

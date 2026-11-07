@@ -1,0 +1,68 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "factor_source": "测试因子，仅用于验收",
+      "legs": [
+        {
+          "ton_km": 1000,
+          "factor_kgco2e_per_ton_km": 0.1
+        },
+        {
+          "ton_km": 500,
+          "factor_kgco2e_per_ton_km": 0.2
+        }
+      ]
+    },
+    "expected": {
+      "kg_co2e": 200
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "factor_source": "测试因子，仅用于验收",
+      "legs": [
+        {
+          "ton_km": 0,
+          "factor_kgco2e_per_ton_km": 0.2
+        }
+      ]
+    },
+    "expected": {
+      "kg_co2e": 0
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "factor_source": "",
+      "legs": [
+        {
+          "ton_km": 1000,
+          "factor_kgco2e_per_ton_km": 0.1
+        },
+        {
+          "ton_km": 500,
+          "factor_kgco2e_per_ton_km": 0.2
+        }
+      ]
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

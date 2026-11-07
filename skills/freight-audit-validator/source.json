@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "a5c-ai/babysitter",
+  "upstream_directory": "library/specializations/domains/business/logistics/skills/freight-audit-validator",
+  "upstream_commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "upstream_directory_url": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/freight-audit-validator",
+  "upstream_files": [
+    {
+      "path": "upstream/SKILL.md",
+      "sha256": "fe7b983287d7582d5217e4601f396312936604ef94d9c1a62a65420dc77dcc19",
+      "source_url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/freight-audit-validator/SKILL.md"
+    }
+  ],
+  "adaptation": "新增中文入口及明确范围的标准库脚本；完整上游目录另存upstream，不把新增代码冒充上游原件。",
+  "execution_scope": "按数量、约定单价和已确认附加费计算应付金额，与账单比较差额。",
+  "limitation": "只比对已提供费率，不解释税法、合同效力或自动付款。",
+  "license": "上游MIT声明保留于LICENSE.upstream.md；新增适配采用MIT。"
+}

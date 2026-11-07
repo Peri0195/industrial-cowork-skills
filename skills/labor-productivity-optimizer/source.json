@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "a5c-ai/babysitter",
+  "upstream_directory": "library/specializations/domains/business/logistics/skills/labor-productivity-optimizer",
+  "upstream_commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "upstream_directory_url": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/labor-productivity-optimizer",
+  "upstream_files": [
+    {
+      "path": "upstream/SKILL.md",
+      "sha256": "4e43ffd169d5754dbece0f62f37d7f8daf3587500b58f9fbbbebb8bad11a7909",
+      "source_url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/labor-productivity-optimizer/SKILL.md"
+    }
+  ],
+  "adaptation": "新增中文入口及明确范围的标准库脚本；完整上游目录另存upstream，不把新增代码冒充上游原件。",
+  "execution_scope": "根据任务量、标准作业分钟及有效利用率估计所需人时和人数。",
+  "limitation": "只估算同类作业人时，未考虑班次法规、技能分工和休息日。",
+  "license": "上游MIT声明保留于LICENSE.upstream.md；新增适配采用MIT。"
+}

@@ -1,0 +1,24 @@
+{
+  "orders": [
+    {
+      "id": "1",
+      "on_time": true,
+      "in_full": true
+    },
+    {
+      "id": "2",
+      "on_time": true,
+      "in_full": false
+    },
+    {
+      "id": "3",
+      "on_time": false,
+      "in_full": true
+    },
+    {
+      "id": "4",
+      "on_time": true,
+      "in_full": true
+    }
+  ]
+}

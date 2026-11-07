@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "a5c-ai/babysitter",
+  "upstream_directory": "library/specializations/domains/business/supply-chain/skills/ddmrp-buffer-manager",
+  "upstream_commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "upstream_directory_url": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/supply-chain/skills/ddmrp-buffer-manager",
+  "upstream_files": [
+    {
+      "path": "upstream/SKILL.md",
+      "sha256": "30928d4e1cb11b91b39135b8507f61276f2038c1b1a8c0ff0b42ec3d493c3a26",
+      "source_url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/supply-chain/skills/ddmrp-buffer-manager/SKILL.md"
+    }
+  ],
+  "adaptation": "新增中文入口及明确范围的标准库脚本；完整上游目录另存upstream，不把新增代码冒充上游原件。",
+  "execution_scope": "按用户给定的平均日用量、解耦提前期和系数计算红黄绿缓冲区。",
+  "limitation": "系数由用户提供；不自动选择缓冲点，也不生成采购订单。",
+  "license": "上游MIT声明保留于LICENSE.upstream.md；新增适配采用MIT。"
+}

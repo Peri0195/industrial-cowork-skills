@@ -1,0 +1,129 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "counts": {
+        "划伤": 50,
+        "尺寸": 30,
+        "其他": 20
+      },
+      "target_fraction": 0.8
+    },
+    "expected": {
+      "total": 100,
+      "priority_categories": [
+        "划伤",
+        "尺寸"
+      ]
+    },
+    "actual": {
+      "total": 100,
+      "priority_categories": [
+        "划伤",
+        "尺寸"
+      ],
+      "rows": [
+        {
+          "category": "划伤",
+          "count": 50,
+          "cumulative_pct": 50.0
+        },
+        {
+          "category": "尺寸",
+          "count": 30,
+          "cumulative_pct": 80.0
+        },
+        {
+          "category": "其他",
+          "count": 20,
+          "cumulative_pct": 100.0
+        }
+      ]
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'counts'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "counts": {
+        "划伤": 50,
+        "尺寸": 30,
+        "其他": 20
+      },
+      "target_fraction": 1
+    },
+    "expected": {
+      "priority_categories": [
+        "划伤",
+        "尺寸",
+        "其他"
+      ]
+    },
+    "actual": {
+      "total": 100,
+      "priority_categories": [
+        "划伤",
+        "尺寸",
+        "其他"
+      ],
+      "rows": [
+        {
+          "category": "划伤",
+          "count": 50,
+          "cumulative_pct": 50.0
+        },
+        {
+          "category": "尺寸",
+          "count": 30,
+          "cumulative_pct": 80.0
+        },
+        {
+          "category": "其他",
+          "count": 20,
+          "cumulative_pct": 100.0
+        }
+      ]
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "counts": {
+        "A": 0
+      },
+      "target_fraction": 0.8
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "总数量必须大于0"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

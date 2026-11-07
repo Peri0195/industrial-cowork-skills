@@ -1,0 +1,77 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "orders": [
+        {
+          "id": "1",
+          "on_time": true,
+          "in_full": true
+        },
+        {
+          "id": "2",
+          "on_time": true,
+          "in_full": false
+        },
+        {
+          "id": "3",
+          "on_time": false,
+          "in_full": true
+        },
+        {
+          "id": "4",
+          "on_time": true,
+          "in_full": true
+        }
+      ]
+    },
+    "expected": {
+      "on_time_pct": 75,
+      "in_full_pct": 75,
+      "otif_pct": 50
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "orders": [
+        {
+          "id": "A",
+          "on_time": false,
+          "in_full": false
+        }
+      ]
+    },
+    "expected": {
+      "otif_pct": 0
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "orders": [
+        {
+          "id": "A",
+          "on_time": "false",
+          "in_full": true
+        }
+      ]
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "shipments": [
+    {
+      "carrier": "A",
+      "amount": 100,
+      "ton_km": 50
+    },
+    {
+      "carrier": "A",
+      "amount": 200,
+      "ton_km": 50
+    },
+    {
+      "carrier": "B",
+      "amount": 100,
+      "ton_km": 100
+    }
+  ]
+}

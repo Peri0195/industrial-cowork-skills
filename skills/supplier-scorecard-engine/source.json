@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "a5c-ai/babysitter",
+  "upstream_directory": "library/specializations/domains/business/supply-chain/skills/supplier-scorecard-engine",
+  "upstream_commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "upstream_directory_url": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/supply-chain/skills/supplier-scorecard-engine",
+  "upstream_files": [
+    {
+      "path": "upstream/SKILL.md",
+      "sha256": "b5e660e6950d31435d434d57be1dace74422942ce09678dbd8ecbf7729cbb77f",
+      "source_url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/supply-chain/skills/supplier-scorecard-engine/SKILL.md"
+    }
+  ],
+  "adaptation": "新增中文入口及明确范围的标准库脚本；完整上游目录另存upstream，不把新增代码冒充上游原件。",
+  "execution_scope": "按明确权重和同尺度指标得分汇总供应商绩效。",
+  "limitation": "不自动设权、不推断缺失评分、不作供应商准入审批。",
+  "license": "上游MIT声明保留于LICENSE.upstream.md；新增适配采用MIT。"
+}

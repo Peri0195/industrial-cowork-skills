@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "a5c-ai/babysitter",
+  "upstream_directory": "library/specializations/domains/business/logistics/skills/logistics-kpi-tracker",
+  "upstream_commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "upstream_directory_url": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/logistics-kpi-tracker",
+  "upstream_files": [
+    {
+      "path": "upstream/SKILL.md",
+      "sha256": "c58b1e108985ec89ed7789b391237b98fb3df946d4598d1ebaf2006688a694ae",
+      "source_url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/logistics-kpi-tracker/SKILL.md"
+    }
+  ],
+  "adaptation": "新增中文入口及明确范围的标准库脚本；完整上游目录另存upstream，不把新增代码冒充上游原件。",
+  "execution_scope": "基于同一订单集合计算准时率、足量率和同时准时足量的OTIF。",
+  "limitation": "准时窗口和足量口径由业务方先确认；不连接物流平台。",
+  "license": "上游MIT声明保留于LICENSE.upstream.md；新增适配采用MIT。"
+}

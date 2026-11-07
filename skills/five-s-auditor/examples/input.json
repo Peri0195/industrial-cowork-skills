@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "id": "清扫",
+      "score": 3,
+      "max_score": 5
+    },
+    {
+      "id": "整理",
+      "score": 5,
+      "max_score": 5
+    }
+  ]
+}

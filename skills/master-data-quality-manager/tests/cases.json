@@ -1,0 +1,100 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "required": [
+        "sku",
+        "unit"
+      ],
+      "allowed_units": [
+        "件",
+        "kg"
+      ],
+      "items": [
+        {
+          "sku": "A",
+          "unit": "件"
+        },
+        {
+          "sku": "A",
+          "unit": ""
+        },
+        {
+          "sku": "B",
+          "unit": "box"
+        }
+      ]
+    },
+    "expected": {
+      "duplicate_ids": [
+        "A"
+      ],
+      "missing_count": 1,
+      "invalid_unit_count": 1
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "required": [
+        "sku",
+        "unit"
+      ],
+      "allowed_units": [
+        "件",
+        "kg"
+      ],
+      "items": [
+        {
+          "sku": "A",
+          "unit": "件"
+        }
+      ]
+    },
+    "expected": {
+      "duplicate_ids": [],
+      "missing_count": 0,
+      "invalid_unit_count": 0
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "required": [],
+      "allowed_units": [
+        "件",
+        "kg"
+      ],
+      "items": [
+        {
+          "sku": "A",
+          "unit": "件"
+        },
+        {
+          "sku": "A",
+          "unit": ""
+        },
+        {
+          "sku": "B",
+          "unit": "box"
+        }
+      ]
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

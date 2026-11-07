@@ -1,0 +1,114 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "options": {
+        "A": [
+          {
+            "p": 0.5,
+            "payoff": 100
+          },
+          {
+            "p": 0.5,
+            "payoff": 0
+          }
+        ],
+        "B": [
+          {
+            "p": 1,
+            "payoff": 40
+          }
+        ]
+      }
+    },
+    "expected": {
+      "best_option": "A",
+      "expected_values": {
+        "A": 50,
+        "B": 40
+      }
+    },
+    "actual": {
+      "best_option": "A",
+      "expected_values": {
+        "A": 50.0,
+        "B": 40
+      }
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'options'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "options": {
+        "A": [
+          {
+            "p": 1,
+            "payoff": -10
+          }
+        ],
+        "B": [
+          {
+            "p": 1,
+            "payoff": -5
+          }
+        ]
+      }
+    },
+    "expected": {
+      "best_option": "B"
+    },
+    "actual": {
+      "best_option": "B",
+      "expected_values": {
+        "A": -10,
+        "B": -5
+      }
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "options": {
+        "A": [
+          {
+            "p": 0.8,
+            "payoff": 5
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "概率和必须为1"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

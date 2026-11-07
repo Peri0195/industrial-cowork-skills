@@ -1,0 +1,140 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "required": [
+        "sku",
+        "unit"
+      ],
+      "allowed_units": [
+        "件",
+        "kg"
+      ],
+      "items": [
+        {
+          "sku": "A",
+          "unit": "件"
+        },
+        {
+          "sku": "A",
+          "unit": ""
+        },
+        {
+          "sku": "B",
+          "unit": "box"
+        }
+      ]
+    },
+    "expected": {
+      "duplicate_ids": [
+        "A"
+      ],
+      "missing_count": 1,
+      "invalid_unit_count": 1
+    },
+    "actual": {
+      "duplicate_ids": [
+        "A"
+      ],
+      "missing_count": 1,
+      "invalid_unit_count": 1,
+      "missing": [
+        {
+          "row": 2,
+          "field": "unit"
+        }
+      ],
+      "invalid_unit_rows": [
+        3
+      ]
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'items'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "required": [
+        "sku",
+        "unit"
+      ],
+      "allowed_units": [
+        "件",
+        "kg"
+      ],
+      "items": [
+        {
+          "sku": "A",
+          "unit": "件"
+        }
+      ]
+    },
+    "expected": {
+      "duplicate_ids": [],
+      "missing_count": 0,
+      "invalid_unit_count": 0
+    },
+    "actual": {
+      "duplicate_ids": [],
+      "missing_count": 0,
+      "invalid_unit_count": 0,
+      "missing": [],
+      "invalid_unit_rows": []
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "required": [],
+      "allowed_units": [
+        "件",
+        "kg"
+      ],
+      "items": [
+        {
+          "sku": "A",
+          "unit": "件"
+        },
+        {
+          "sku": "A",
+          "unit": ""
+        },
+        {
+          "sku": "B",
+          "unit": "box"
+        }
+      ]
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "必填字段列表无效"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

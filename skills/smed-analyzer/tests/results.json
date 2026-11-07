@@ -1,0 +1,95 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "before_internal_minutes": [
+        10,
+        20,
+        5
+      ],
+      "after_internal_minutes": [
+        8,
+        10,
+        2
+      ]
+    },
+    "expected": {
+      "saved_minutes": 15,
+      "reduction_pct": 42.857142857142854
+    },
+    "actual": {
+      "before_minutes": 35,
+      "after_minutes": 20,
+      "saved_minutes": 15,
+      "reduction_pct": 42.857142857142854
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'before_internal_minutes'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "before_internal_minutes": [
+        10,
+        20,
+        5
+      ],
+      "after_internal_minutes": [
+        40
+      ]
+    },
+    "expected": {
+      "saved_minutes": -5
+    },
+    "actual": {
+      "before_minutes": 35,
+      "after_minutes": 40,
+      "saved_minutes": -5,
+      "reduction_pct": -14.285714285714285
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "before_internal_minutes": [
+        0
+      ],
+      "after_internal_minutes": [
+        8,
+        10,
+        2
+      ]
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "改善前时间必须大于0"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

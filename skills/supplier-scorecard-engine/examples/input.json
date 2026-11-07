@@ -1,0 +1,16 @@
+{
+  "weights": {
+    "quality": 0.6,
+    "delivery": 0.4
+  },
+  "suppliers": {
+    "A": {
+      "quality": 90,
+      "delivery": 80
+    },
+    "B": {
+      "quality": 80,
+      "delivery": 90
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "a5c-ai/babysitter",
+  "upstream_directory": "library/specializations/domains/business/logistics/skills/abc-xyz-classifier",
+  "upstream_commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "upstream_directory_url": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/abc-xyz-classifier",
+  "upstream_files": [
+    {
+      "path": "upstream/SKILL.md",
+      "sha256": "f2ae2e56d105cd38ca9e165eeeb7a2c43f3a3a1994ffd403c584252332cabb17",
+      "source_url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/abc-xyz-classifier/SKILL.md"
+    }
+  ],
+  "adaptation": "新增中文入口及明确范围的标准库脚本；完整上游目录另存upstream，不把新增代码冒充上游原件。",
+  "execution_scope": "对SKU按年耗用金额划ABC类，按需求变异系数划XYZ类，保留分类边界口径。",
+  "limitation": "ABC阈值跨界SKU采用加入前累计占比口径，不能与其他边界口径混用。",
+  "license": "上游MIT声明保留于LICENSE.upstream.md；新增适配采用MIT。"
+}

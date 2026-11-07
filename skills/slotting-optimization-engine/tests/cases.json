@@ -1,0 +1,94 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "items": [
+        {
+          "sku": "A",
+          "picks": 10
+        },
+        {
+          "sku": "B",
+          "picks": 5
+        }
+      ],
+      "slots": [
+        {
+          "slot": "near",
+          "distance": 2
+        },
+        {
+          "slot": "far",
+          "distance": 8
+        }
+      ]
+    },
+    "expected": {
+      "assignment": {
+        "A": "near",
+        "B": "far"
+      },
+      "weighted_distance": 60
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "items": [
+        {
+          "sku": "A",
+          "picks": 1
+        }
+      ],
+      "slots": [
+        {
+          "slot": "Z",
+          "distance": 0
+        }
+      ]
+    },
+    "expected": {
+      "assignment": {
+        "A": "Z"
+      },
+      "weighted_distance": 0
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "items": [
+        {
+          "sku": "A",
+          "picks": 10
+        },
+        {
+          "sku": "B",
+          "picks": 5
+        }
+      ],
+      "slots": [
+        {
+          "slot": "X",
+          "distance": 2
+        }
+      ]
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

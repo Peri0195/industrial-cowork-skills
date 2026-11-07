@@ -1,0 +1,50 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "available_minutes": 420,
+      "demand_units": 210,
+      "cycle_minutes": 2.5
+    },
+    "expected": {
+      "takt_minutes": 2,
+      "gap_minutes": 0.5
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "available_minutes": 420,
+      "demand_units": 420,
+      "cycle_minutes": 2.5
+    },
+    "expected": {
+      "takt_minutes": 1,
+      "gap_minutes": 1.5
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "available_minutes": 420,
+      "demand_units": 0,
+      "cycle_minutes": 2.5
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

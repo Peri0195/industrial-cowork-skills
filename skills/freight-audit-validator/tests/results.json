@@ -1,0 +1,84 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "quantity": 12,
+      "unit_rate": 10,
+      "approved_surcharges": 5,
+      "invoiced": 130,
+      "tolerance": 0.01
+    },
+    "expected": {
+      "expected_amount": 125,
+      "difference": 5,
+      "flagged": true
+    },
+    "actual": {
+      "expected_amount": 125,
+      "difference": 5,
+      "flagged": true
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'quantity'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "quantity": 12,
+      "unit_rate": 10,
+      "approved_surcharges": 5,
+      "invoiced": 125,
+      "tolerance": 0.01
+    },
+    "expected": {
+      "difference": 0,
+      "flagged": false
+    },
+    "actual": {
+      "expected_amount": 125,
+      "difference": 0,
+      "flagged": false
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "quantity": -1,
+      "unit_rate": 10,
+      "approved_surcharges": 5,
+      "invoiced": 130,
+      "tolerance": 0.01
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "quantity: 必须非负"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "skill": "oee-calculator",
+    "import": "通过：用户导入，安装文件独立比对一致",
+    "invocation": "通过：用户回执、实际产物核对及已安装脚本复跑一致"
+  },
+  {
+    "skill": "takt-time-calculator",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "time-study-analyzer",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "work-sampling-analyzer",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "line-balancer",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "smed-analyzer",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "pareto-analyzer",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "five-s-auditor",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "queuing-analyzer",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "decision-tree-analyzer",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "facility-layout-optimizer",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "abc-xyz-classifier",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "cycle-count-scheduler",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "dead-stock-identifier",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "fifo-lifo-controller",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "freight-audit-validator",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "load-optimization-calculator",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "logistics-kpi-tracker",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "safety-stock-calculator",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "slotting-optimization-engine",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "transportation-spend-analyzer",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "forecast-accuracy-analyzer",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "supplier-scorecard-engine",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "tco-calculator",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "cost-to-serve-analyzer",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "capacity-constraint-analyzer",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "ddmrp-buffer-manager",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "master-data-quality-manager",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "labor-productivity-optimizer",
+    "import": "待实测",
+    "invocation": "待实测"
+  },
+  {
+    "skill": "carbon-footprint-calculator",
+    "import": "待实测",
+    "invocation": "待实测"
+  }
+]

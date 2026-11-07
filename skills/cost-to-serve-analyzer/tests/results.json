@@ -1,0 +1,131 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "handling_rate": 5,
+      "orders": [
+        {
+          "customer": "A",
+          "units": 10,
+          "direct_cost": 20,
+          "handling_events": 2
+        },
+        {
+          "customer": "A",
+          "units": 10,
+          "direct_cost": 30,
+          "handling_events": 1
+        }
+      ]
+    },
+    "expected": {
+      "customers": {
+        "A": {
+          "total_cost": 65,
+          "units": 20,
+          "cost_per_unit": 3.25
+        }
+      }
+    },
+    "actual": {
+      "customers": {
+        "A": {
+          "total_cost": 65,
+          "units": 20,
+          "cost_per_unit": 3.25
+        }
+      }
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'handling_rate'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "handling_rate": 0,
+      "orders": [
+        {
+          "customer": "A",
+          "units": 10,
+          "direct_cost": 20,
+          "handling_events": 2
+        },
+        {
+          "customer": "A",
+          "units": 10,
+          "direct_cost": 30,
+          "handling_events": 1
+        }
+      ]
+    },
+    "expected": {
+      "customers": {
+        "A": {
+          "total_cost": 50,
+          "units": 20,
+          "cost_per_unit": 2.5
+        }
+      }
+    },
+    "actual": {
+      "customers": {
+        "A": {
+          "total_cost": 50,
+          "units": 20,
+          "cost_per_unit": 2.5
+        }
+      }
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "handling_rate": -1,
+      "orders": [
+        {
+          "customer": "A",
+          "units": 10,
+          "direct_cost": 20,
+          "handling_events": 2
+        },
+        {
+          "customer": "A",
+          "units": 10,
+          "direct_cost": 30,
+          "handling_events": 1
+        }
+      ]
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "handling_rate: 必须非负"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

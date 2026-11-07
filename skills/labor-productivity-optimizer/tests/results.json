@@ -1,0 +1,78 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "task_count": 600,
+      "standard_minutes": 2,
+      "utilization": 0.8,
+      "hours_per_worker": 8
+    },
+    "expected": {
+      "labor_hours": 25,
+      "workers": 4
+    },
+    "actual": {
+      "labor_hours": 25.0,
+      "workers": 4
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'task_count'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "task_count": 0,
+      "standard_minutes": 2,
+      "utilization": 0.8,
+      "hours_per_worker": 8
+    },
+    "expected": {
+      "labor_hours": 0,
+      "workers": 0
+    },
+    "actual": {
+      "labor_hours": 0.0,
+      "workers": 0
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "task_count": 600,
+      "standard_minutes": 2,
+      "utilization": 0,
+      "hours_per_worker": 8
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "利用率须大于0"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

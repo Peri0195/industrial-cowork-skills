@@ -1,0 +1,54 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "weight_kg": 8000,
+      "volume_m3": 30,
+      "weight_capacity_kg": 10000,
+      "volume_capacity_m3": 60
+    },
+    "expected": {
+      "weight_utilization_pct": 80,
+      "volume_utilization_pct": 50,
+      "over_capacity": false
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "weight_kg": 11000,
+      "volume_m3": 30,
+      "weight_capacity_kg": 10000,
+      "volume_capacity_m3": 60
+    },
+    "expected": {
+      "weight_utilization_pct": 110,
+      "over_capacity": true
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "weight_kg": 8000,
+      "volume_m3": 30,
+      "weight_capacity_kg": 0,
+      "volume_capacity_m3": 60
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

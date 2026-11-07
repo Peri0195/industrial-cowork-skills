@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "a5c-ai/babysitter",
+  "upstream_directory": "library/specializations/domains/business/logistics/skills/fifo-lifo-controller",
+  "upstream_commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "upstream_directory_url": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/fifo-lifo-controller",
+  "upstream_files": [
+    {
+      "path": "upstream/SKILL.md",
+      "sha256": "8b5882060aed3b0391ca371e0a568918e04dcbb9b170b142ba9409ceeae50049",
+      "source_url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/fifo-lifo-controller/SKILL.md"
+    }
+  ],
+  "adaptation": "新增中文入口及明确范围的标准库脚本；完整上游目录另存upstream，不把新增代码冒充上游原件。",
+  "execution_scope": "按FIFO、LIFO或FEFO规则为指定需求生成批次分配建议并报告缺口。",
+  "limitation": "FEFO只排序，不自动判定保质期是否允许发货；库位、冻结和质量状态须先筛选。",
+  "license": "上游MIT声明保留于LICENSE.upstream.md；新增适配采用MIT。"
+}

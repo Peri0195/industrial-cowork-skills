@@ -1,0 +1,120 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "method": "FIFO",
+      "quantity": 7,
+      "batches": [
+        {
+          "id": "A",
+          "received": "2026-10-01",
+          "quantity": 5
+        },
+        {
+          "id": "B",
+          "received": "2026-10-02",
+          "quantity": 8
+        }
+      ]
+    },
+    "expected": {
+      "allocation": {
+        "A": 5,
+        "B": 2
+      },
+      "shortage": 0
+    },
+    "actual": {
+      "allocation": {
+        "A": 5,
+        "B": 2
+      },
+      "shortage": 0
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'method'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "method": "FIFO",
+      "quantity": 20,
+      "batches": [
+        {
+          "id": "A",
+          "received": "2026-10-01",
+          "quantity": 5
+        },
+        {
+          "id": "B",
+          "received": "2026-10-02",
+          "quantity": 8
+        }
+      ]
+    },
+    "expected": {
+      "shortage": 7,
+      "allocation": {
+        "A": 5,
+        "B": 8
+      }
+    },
+    "actual": {
+      "allocation": {
+        "A": 5,
+        "B": 8
+      },
+      "shortage": 7
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "method": "UNKNOWN",
+      "quantity": 7,
+      "batches": [
+        {
+          "id": "A",
+          "received": "2026-10-01",
+          "quantity": 5
+        },
+        {
+          "id": "B",
+          "received": "2026-10-02",
+          "quantity": 8
+        }
+      ]
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "不支持的出库规则"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

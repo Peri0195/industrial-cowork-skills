@@ -1,0 +1,111 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "demand_units": 100,
+      "stations": [
+        {
+          "id": "A",
+          "available_minutes": 480,
+          "minutes_per_unit": 4
+        },
+        {
+          "id": "B",
+          "available_minutes": 480,
+          "minutes_per_unit": 6
+        }
+      ]
+    },
+    "expected": {
+      "bottleneck": "B",
+      "capacity_units": 80,
+      "shortfall_units": 20
+    },
+    "actual": {
+      "bottleneck": "B",
+      "capacity_units": 80.0,
+      "shortfall_units": 20.0,
+      "station_capacity": {
+        "A": 120.0,
+        "B": 80.0
+      }
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'stations'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "demand_units": 50,
+      "stations": [
+        {
+          "id": "A",
+          "available_minutes": 480,
+          "minutes_per_unit": 4
+        },
+        {
+          "id": "B",
+          "available_minutes": 480,
+          "minutes_per_unit": 6
+        }
+      ]
+    },
+    "expected": {
+      "shortfall_units": 0,
+      "capacity_units": 80
+    },
+    "actual": {
+      "bottleneck": "B",
+      "capacity_units": 80.0,
+      "shortfall_units": 0,
+      "station_capacity": {
+        "A": 120.0,
+        "B": 80.0
+      }
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "demand_units": 100,
+      "stations": [
+        {
+          "id": "A",
+          "available_minutes": 480,
+          "minutes_per_unit": 0
+        }
+      ]
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "minutes_per_unit: 必须大于0"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

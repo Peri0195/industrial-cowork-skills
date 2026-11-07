@@ -1,0 +1,90 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "adu": 10,
+      "dlt_days": 5,
+      "lead_factor": 0.5,
+      "variability_factor": 0.5,
+      "moq": 20,
+      "order_cycle_days": 3
+    },
+    "expected": {
+      "red_zone": 37.5,
+      "yellow_zone": 50,
+      "green_zone": 30,
+      "top_green": 117.5
+    },
+    "actual": {
+      "red_zone": 37.5,
+      "yellow_zone": 50,
+      "green_zone": 30,
+      "top_green": 117.5
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'adu'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "adu": 10,
+      "dlt_days": 5,
+      "lead_factor": 0.5,
+      "variability_factor": 0.5,
+      "moq": 100,
+      "order_cycle_days": 3
+    },
+    "expected": {
+      "green_zone": 100,
+      "top_green": 187.5
+    },
+    "actual": {
+      "red_zone": 37.5,
+      "yellow_zone": 50,
+      "green_zone": 100,
+      "top_green": 187.5
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "adu": 0,
+      "dlt_days": 5,
+      "lead_factor": 0.5,
+      "variability_factor": 0.5,
+      "moq": 20,
+      "order_cycle_days": 3
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "adu: 必须大于0"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

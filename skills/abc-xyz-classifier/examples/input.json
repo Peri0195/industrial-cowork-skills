@@ -1,0 +1,26 @@
+{
+  "items": [
+    {
+      "sku": "A",
+      "annual_value": 80,
+      "demand": [
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "sku": "B",
+      "annual_value": 20,
+      "demand": [
+        0,
+        10,
+        20
+      ]
+    }
+  ],
+  "abc_a": 0.8,
+  "abc_b": 0.95,
+  "xyz_x": 0.2,
+  "xyz_y": 0.5
+}

@@ -1,0 +1,125 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "as_of": "2026-11-07",
+      "items": [
+        {
+          "sku": "A",
+          "last_count": "2026-10-01",
+          "interval_days": 30,
+          "book": 100,
+          "actual": 98
+        },
+        {
+          "sku": "B",
+          "last_count": "2026-11-01",
+          "interval_days": 30,
+          "book": 10,
+          "actual": 10
+        }
+      ]
+    },
+    "expected": {
+      "due_skus": [
+        "A"
+      ],
+      "variance": {
+        "A": -2,
+        "B": 0
+      }
+    },
+    "actual": {
+      "due_skus": [
+        "A"
+      ],
+      "variance": {
+        "A": -2,
+        "B": 0
+      }
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'as_of'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "as_of": "2026-10-31",
+      "items": [
+        {
+          "sku": "A",
+          "last_count": "2026-10-01",
+          "interval_days": 30,
+          "book": 1,
+          "actual": 1
+        }
+      ]
+    },
+    "expected": {
+      "due_skus": [
+        "A"
+      ]
+    },
+    "actual": {
+      "due_skus": [
+        "A"
+      ],
+      "variance": {
+        "A": 0
+      }
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "as_of": "2020-01-01",
+      "items": [
+        {
+          "sku": "A",
+          "last_count": "2026-10-01",
+          "interval_days": 30,
+          "book": 100,
+          "actual": 98
+        },
+        {
+          "sku": "B",
+          "last_count": "2026-11-01",
+          "interval_days": 30,
+          "book": 10,
+          "actual": 10
+        }
+      ]
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "盘点日期晚于统计日"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

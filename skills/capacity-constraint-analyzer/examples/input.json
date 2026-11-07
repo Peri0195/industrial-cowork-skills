@@ -1,0 +1,15 @@
+{
+  "demand_units": 100,
+  "stations": [
+    {
+      "id": "A",
+      "available_minutes": 480,
+      "minutes_per_unit": 4
+    },
+    {
+      "id": "B",
+      "available_minutes": 480,
+      "minutes_per_unit": 6
+    }
+  ]
+}

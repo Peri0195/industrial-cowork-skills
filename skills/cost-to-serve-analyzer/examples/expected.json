@@ -1,0 +1,9 @@
+{
+  "customers": {
+    "A": {
+      "total_cost": 65,
+      "units": 20,
+      "cost_per_unit": 3.25
+    }
+  }
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "initial_cost": 1000,
+      "annual_costs": [
+        110,
+        121
+      ],
+      "discount_rate": 0.1,
+      "residual_value": 121
+    },
+    "expected": {
+      "present_value_tco": 1100
+    },
+    "actual": {
+      "present_value_tco": 1100.0,
+      "years": 2
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'initial_cost'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "initial_cost": 1000,
+      "annual_costs": [
+        110,
+        121
+      ],
+      "discount_rate": 0,
+      "residual_value": 121
+    },
+    "expected": {
+      "present_value_tco": 1110
+    },
+    "actual": {
+      "present_value_tco": 1110.0,
+      "years": 2
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "initial_cost": 1000,
+      "annual_costs": [],
+      "discount_rate": 0.1,
+      "residual_value": 121
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "annual_costs: 数组过短"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

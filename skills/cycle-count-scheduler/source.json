@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "a5c-ai/babysitter",
+  "upstream_directory": "library/specializations/domains/business/logistics/skills/cycle-count-scheduler",
+  "upstream_commit": "feb68abe397acc14f32b34984975c48fedba2b33",
+  "upstream_directory_url": "https://github.com/a5c-ai/babysitter/tree/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/cycle-count-scheduler",
+  "upstream_files": [
+    {
+      "path": "upstream/SKILL.md",
+      "sha256": "f242736115fc23433cf958c7e1126e2444da76ab968deb9ce87982c51df0ecee",
+      "source_url": "https://raw.githubusercontent.com/a5c-ai/babysitter/feb68abe397acc14f32b34984975c48fedba2b33/library/specializations/domains/business/logistics/skills/cycle-count-scheduler/SKILL.md"
+    }
+  ],
+  "adaptation": "新增中文入口及明确范围的标准库脚本；完整上游目录另存upstream，不把新增代码冒充上游原件。",
+  "execution_scope": "按SKU最近盘点日期和既定周期列出已到期项目，输出账实差异。",
+  "limitation": "盘点周期由用户规定，不自动创建ERP盘点单。",
+  "license": "上游MIT声明保留于LICENSE.upstream.md；新增适配采用MIT。"
+}

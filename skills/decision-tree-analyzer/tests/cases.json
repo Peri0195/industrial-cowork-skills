@@ -1,0 +1,83 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "options": {
+        "A": [
+          {
+            "p": 0.5,
+            "payoff": 100
+          },
+          {
+            "p": 0.5,
+            "payoff": 0
+          }
+        ],
+        "B": [
+          {
+            "p": 1,
+            "payoff": 40
+          }
+        ]
+      }
+    },
+    "expected": {
+      "best_option": "A",
+      "expected_values": {
+        "A": 50,
+        "B": 40
+      }
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "options": {
+        "A": [
+          {
+            "p": 1,
+            "payoff": -10
+          }
+        ],
+        "B": [
+          {
+            "p": 1,
+            "payoff": -5
+          }
+        ]
+      }
+    },
+    "expected": {
+      "best_option": "B"
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "options": {
+        "A": [
+          {
+            "p": 0.8,
+            "payoff": 5
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

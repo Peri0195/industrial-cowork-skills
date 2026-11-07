@@ -1,0 +1,89 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "method": "FIFO",
+      "quantity": 7,
+      "batches": [
+        {
+          "id": "A",
+          "received": "2026-10-01",
+          "quantity": 5
+        },
+        {
+          "id": "B",
+          "received": "2026-10-02",
+          "quantity": 8
+        }
+      ]
+    },
+    "expected": {
+      "allocation": {
+        "A": 5,
+        "B": 2
+      },
+      "shortage": 0
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "method": "FIFO",
+      "quantity": 20,
+      "batches": [
+        {
+          "id": "A",
+          "received": "2026-10-01",
+          "quantity": 5
+        },
+        {
+          "id": "B",
+          "received": "2026-10-02",
+          "quantity": 8
+        }
+      ]
+    },
+    "expected": {
+      "shortage": 7,
+      "allocation": {
+        "A": 5,
+        "B": 8
+      }
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "method": "UNKNOWN",
+      "quantity": 7,
+      "batches": [
+        {
+          "id": "A",
+          "received": "2026-10-01",
+          "quantity": 5
+        },
+        {
+          "id": "B",
+          "received": "2026-10-02",
+          "quantity": 8
+        }
+      ]
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

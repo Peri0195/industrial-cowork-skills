@@ -1,0 +1,79 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "arrivals_per_hour": 4,
+      "service_per_hour": 6
+    },
+    "expected": {
+      "utilization": 0.6666666666666666,
+      "queue_length": 1.3333333333333333,
+      "wait_hours": 0.3333333333333333
+    },
+    "actual": {
+      "utilization": 0.6666666666666666,
+      "queue_length": 1.333333333333333,
+      "system_length": 2.0,
+      "wait_hours": 0.3333333333333333,
+      "sojourn_hours": 0.5
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'arrivals_per_hour'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "arrivals_per_hour": 3,
+      "service_per_hour": 6
+    },
+    "expected": {
+      "queue_length": 0.5,
+      "wait_hours": 0.16666666666666666
+    },
+    "actual": {
+      "utilization": 0.5,
+      "queue_length": 0.5,
+      "system_length": 1.0,
+      "wait_hours": 0.16666666666666666,
+      "sojourn_hours": 0.3333333333333333
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "arrivals_per_hour": 6,
+      "service_per_hour": 6
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "到达率必须小于服务率，系统否则无稳态"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

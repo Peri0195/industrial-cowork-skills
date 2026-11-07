@@ -1,0 +1,72 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "working_observations": 80,
+      "total_observations": 100
+    },
+    "expected": {
+      "utilization_pct": 80
+    },
+    "actual": {
+      "utilization_pct": 80.0,
+      "lower95_pct": 71.11708344068411,
+      "upper95_pct": 86.66330666689676
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'total_observations'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "working_observations": 0,
+      "total_observations": 100
+    },
+    "expected": {
+      "utilization_pct": 0
+    },
+    "actual": {
+      "utilization_pct": 0.0,
+      "lower95_pct": 3.469446951953614e-16,
+      "upper95_pct": 3.699349820698568
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "working_observations": 101,
+      "total_observations": 100
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "工作次数超过总次数"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

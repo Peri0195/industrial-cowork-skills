@@ -1,0 +1,93 @@
+[
+  {
+    "case": "normal",
+    "input": {
+      "factor_source": "测试因子，仅用于验收",
+      "legs": [
+        {
+          "ton_km": 1000,
+          "factor_kgco2e_per_ton_km": 0.1
+        },
+        {
+          "ton_km": 500,
+          "factor_kgco2e_per_ton_km": 0.2
+        }
+      ]
+    },
+    "expected": {
+      "kg_co2e": 200
+    },
+    "actual": {
+      "kg_co2e": 200.0,
+      "factor_source": "测试因子，仅用于验收"
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing",
+    "input": {},
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "'factor_source'"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "wrong-root",
+    "input": [],
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "输入必须为JSON对象"
+    },
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "boundary",
+    "input": {
+      "factor_source": "测试因子，仅用于验收",
+      "legs": [
+        {
+          "ton_km": 0,
+          "factor_kgco2e_per_ton_km": 0.2
+        }
+      ]
+    },
+    "expected": {
+      "kg_co2e": 0
+    },
+    "actual": {
+      "kg_co2e": 0.0,
+      "factor_source": "测试因子，仅用于验收"
+    },
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "invalid-business",
+    "input": {
+      "factor_source": "",
+      "legs": [
+        {
+          "ton_km": 1000,
+          "factor_kgco2e_per_ton_km": 0.1
+        },
+        {
+          "ton_km": 500,
+          "factor_kgco2e_per_ton_km": 0.2
+        }
+      ]
+    },
+    "expected": null,
+    "actual": {
+      "status": "error",
+      "message": "factor_source: 字符串不能为空"
+    },
+    "exit_code": 2,
+    "passed": true
+  }
+]

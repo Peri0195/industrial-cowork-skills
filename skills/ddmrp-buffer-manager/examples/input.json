@@ -1,0 +1,8 @@
+{
+  "adu": 10,
+  "dlt_days": 5,
+  "lead_factor": 0.5,
+  "variability_factor": 0.5,
+  "moq": 20,
+  "order_cycle_days": 3
+}

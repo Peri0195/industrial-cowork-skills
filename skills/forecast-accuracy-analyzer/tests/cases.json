@@ -1,0 +1,67 @@
+[
+  {
+    "id": "normal",
+    "input": {
+      "actual": [
+        100,
+        200
+      ],
+      "forecast": [
+        110,
+        180
+      ]
+    },
+    "expected": {
+      "mae": 15,
+      "rmse": 15.811388300841896,
+      "wape_pct": 10,
+      "bias": -5
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "missing",
+    "input": {},
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "wrong-root",
+    "input": [],
+    "expected": null,
+    "expected_exit_code": 2
+  },
+  {
+    "id": "boundary",
+    "input": {
+      "actual": [
+        0,
+        0
+      ],
+      "forecast": [
+        0,
+        0
+      ]
+    },
+    "expected": {
+      "mae": 0,
+      "wape_pct": null,
+      "bias": 0
+    },
+    "expected_exit_code": 0
+  },
+  {
+    "id": "invalid-business",
+    "input": {
+      "actual": [
+        100,
+        200
+      ],
+      "forecast": [
+        1
+      ]
+    },
+    "expected": null,
+    "expected_exit_code": 2
+  }
+]

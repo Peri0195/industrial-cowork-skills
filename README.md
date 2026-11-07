@@ -1,4 +1,4 @@
-# 工业 Cowork 技能 · 第一批30项
+# 工业 Cowork 技能目录
 
 本批含30个独立技能包，完整保留上游说明，并增加中文入口与范围明确的离线执行脚本。
 
@@ -47,3 +47,9 @@ OEE已由用户在MEA导入及调用，实际产物已核对。其余29项有既
 |28|物料主数据缺项与重复检查|[master-data-quality-manager](skills/master-data-quality-manager)|[下载](downloads/master-data-quality-manager.zip?raw=true)|
 |29|仓库作业人时需求核算|[labor-productivity-optimizer](skills/labor-productivity-optimizer)|[下载](downloads/labor-productivity-optimizer.zip?raw=true)|
 |30|运输活动排放因子核算|[carbon-footprint-calculator](skills/carbon-footprint-calculator)|[下载](downloads/carbon-footprint-calculator.zip?raw=true)|
+
+## 第二批：原作者公开技能链接（31—60）
+
+[第二批Excel](catalog/batch-02.xlsx) · [技能目录与说明](catalog/batch-02.md)
+
+第二批保留原作者链接，来源为公网下载，不包含自建ZIP。无需为这些技能新建仓库。

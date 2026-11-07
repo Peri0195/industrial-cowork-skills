@@ -59,3 +59,9 @@ OEE已由用户在MEA导入及调用，实际产物已核对。其余29项有既
 [第三批Excel](catalog/batch-03.xlsx) · [技能目录与说明](catalog/batch-03.md)
 
 第三批保留原作者链接，来源为公网下载，不包含自建ZIP。无需为这些技能新建仓库。
+
+## 第四批：最后12项（91—102）
+
+[第四批Excel](catalog/batch-04.xlsx) · [技能目录](catalog/batch-04.md) · [完整原始说明](catalog/batch-04-originals.md)
+
+按最新要求总计102项，本轮收尾。第四批提供原作者链接，来源为公网下载，未做运行或平台导入验证。
